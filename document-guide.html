@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Procurement Guide &bull; Sahayak Welfare Copilot</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇮🇳</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-shadow-none { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-2 text-slate-600 hover:text-orange-600 font-semibold text-xs transition">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span id="navBackText">← Back to Sahayak Finder</span>
+        </a>
+        <span class="text-slate-300">|</span>
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-base shadow-sm">
+            स
+          </div>
+          <div>
+            <h1 class="text-sm font-extrabold text-slate-900 leading-tight">Sahayak Document Desk</h1>
+            <p class="text-[10px] text-slate-500 font-medium">Official Government Certificate Assistance</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions: Switcher & Language -->
+      <div class="flex items-center space-x-3">
+        <!-- Document Switcher -->
+        <div class="hidden sm:flex items-center space-x-1.5 text-xs">
+          <label for="docSelectDropdown" class="text-slate-500 font-semibold">Change Document:</label>
+          <select id="docSelectDropdown" onchange="switchDocumentFromDropdown(this.value)" class="px-2.5 py-1.5 border border-slate-300 rounded-lg text-xs font-bold bg-white focus:ring-2 focus:ring-orange-500 outline-none">
+            <option value="income_certificate">Income Certificate (आय प्रमाण पत्र)</option>
+            <option value="domicile_certificate">Domicile Certificate (निवास प्रमाण पत्र)</option>
+            <option value="caste_certificate">Caste Certificate (जाति प्रमाण पत्र)</option>
+            <option value="ration_card">Ration Card (राशन कार्ड)</option>
+            <option value="bank_passbook">Bank Passbook & NPCI (बैंक खाता)</option>
+            <option value="bocw_labor_card">UP BOCW Shramik Card (मजदूर कार्ड)</option>
+            <option value="bonafide_admission_proof">Bonafide Certificate (कॉलेज प्रमाण)</option>
+            <option value="land_khatauni">Land Khatauni (खतौनी / खसरा)</option>
+            <option value="udid_disability_card">UDID Disability Card (दिव्यांग कार्ड)</option>
+            <option value="aadhaar_card">Aadhaar Card (आधार कार्ड)</option>
+          </select>
+        </div>
+
+        <!-- Language Switcher -->
+        <select id="guideLangSelect" onchange="changeGuideLanguage(this.value)" class="text-xs font-bold px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 focus:ring-2 focus:ring-orange-500 outline-none">
+          <option value="en">English</option>
+          <option value="hi" selected>हिंदी (Hindi)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+
+        <!-- Print Button -->
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center space-x-1.5 transition">
+          <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">Print Guide</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Document Selector (Below Navbar) -->
+  <div class="sm:hidden bg-slate-100 border-b border-slate-200 p-3 no-print">
+    <label for="mobileDocSelect" class="block text-[11px] font-bold text-slate-600 mb-1">Select Document to View Guidance:</label>
+    <select id="mobileDocSelect" onchange="switchDocumentFromDropdown(this.value)" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-bold bg-white">
+      <option value="income_certificate">Income Certificate (आय प्रमाण पत्र)</option>
+      <option value="domicile_certificate">Domicile Certificate (निवास प्रमाण पत्र)</option>
+      <option value="caste_certificate">Caste Certificate (जाति प्रमाण पत्र)</option>
+      <option value="ration_card">Ration Card (राशन कार्ड)</option>
+      <option value="bank_passbook">Bank Passbook & NPCI (बैंक खाता)</option>
+      <option value="bocw_labor_card">UP BOCW Shramik Card (मजदूर कार्ड)</option>
+      <option value="bonafide_admission_proof">Bonafide Certificate (कॉलेज प्रमाण)</option>
+      <option value="land_khatauni">Land Khatauni (खतौनी / खसरा)</option>
+      <option value="udid_disability_card">UDID Disability Card (दिव्यांग कार्ड)</option>
+      <option value="aadhaar_card">Aadhaar Card (आधार कार्ड)</option>
+    </select>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+
+    <!-- Document Header Hero Card -->
+    <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden mb-8">
+      <div class="relative z-10">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider">
+            🏛️ Government Document Procurement Guide
+          </span>
+          <span id="guideOnlineBadge" class="inline-block px-3 py-1 bg-emerald-400/30 backdrop-blur-md rounded-full text-xs font-bold tracking-wide">
+            ✓ Online Application Available
+          </span>
+        </div>
+
+        <h2 id="guideDocTitle" class="text-2xl sm:text-4xl font-black tracking-tight mb-2">
+          Income Certificate (आय प्रमाण पत्र)
+        </h2>
+        <p id="guideDocSubtitle" class="text-orange-100 text-xs sm:text-sm max-w-3xl leading-relaxed">
+          Official step-by-step instructions, issuing authority guidelines, eligibility criteria, and verified portal links to obtain this document without paying bribes.
+        </p>
+
+        <!-- Quick Metrics Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/20 text-xs">
+          <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl">
+            <span class="text-orange-200 block text-[11px] font-semibold">Issuing Authority</span>
+            <span id="metricAuthority" class="font-bold text-white text-xs sm:text-sm mt-0.5 block">Revenue Department</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl">
+            <span class="text-orange-200 block text-[11px] font-semibold">Processing Timeline</span>
+            <span id="metricTime" class="font-bold text-white text-xs sm:text-sm mt-0.5 block">~15 Days</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl">
+            <span class="text-orange-200 block text-[11px] font-semibold">Official Government Fee</span>
+            <span id="metricFee" class="font-bold text-white text-xs sm:text-sm mt-0.5 block">₹30</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl">
+            <span class="text-orange-200 block text-[11px] font-semibold">Portal Domain Status</span>
+            <span class="font-bold text-emerald-300 text-xs sm:text-sm mt-0.5 block flex items-center space-x-1">
+              <span>Verified .gov.in</span>
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-Column Responsive Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- LEFT COLUMN: Step-by-Step Application Procedure (2 cols) -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- Anti-Bribery / Anti-Middleman Alert -->
+        <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-start space-x-3 text-xs text-amber-900 shadow-xs">
+          <div class="p-2 rounded-xl bg-amber-200/80 text-amber-900 shrink-0 mt-0.5">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-amber-950 mb-0.5" id="antiFraudTitle">Citizen Advisory: Say No to Middlemen &amp; Phishing</h4>
+            <p id="antiFraudDesc" class="leading-relaxed text-amber-900">
+              Government certificates never require extra bribes. Always verify that the website URL ends in <strong>.gov.in</strong> or <strong>.nic.in</strong>. The official statutory fee is strictly fixed by state gazette order.
+            </p>
+          </div>
+        </div>
+
+        <!-- Application Steps Card -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100 flex-wrap gap-2">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-9 h-9 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+                <i data-lucide="list-ordered" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-900" id="stepsHeading">Step-by-Step Application Procedure</h3>
+                <p class="text-xs text-slate-500" id="stepsSubheading">Follow this exact sequence to ensure zero rejections</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700" id="stepsCountBadge">
+              6 Steps to Complete
+            </span>
+          </div>
+
+          <!-- Step Cards Timeline Container -->
+          <div id="stepsContainer" class="space-y-4">
+            <!-- Dynamic step items render here -->
+          </div>
+        </div>
+
+        <!-- Official Portal Action Card -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="space-y-1.5 max-w-md text-center sm:text-left">
+            <div class="flex items-center space-x-2 justify-center sm:justify-start">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Official State Portal</span>
+            </div>
+            <h4 class="text-lg font-bold text-white" id="portalCardHeading">Ready to Apply Online?</h4>
+            <p class="text-xs text-slate-300 leading-relaxed" id="portalCardDesc">
+              Visit the official verified government portal directly. You can fill the form yourself or show this guide to your nearest Common Service Center (CSC) operator.
+            </p>
+          </div>
+          <a id="guidePortalBtn" href="#" target="_blank" class="px-6 py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-extrabold text-xs sm:text-sm flex items-center space-x-2 shadow-lg shadow-orange-600/40 transition shrink-0">
+            <span id="portalBtnText">Open Official Portal</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Required Documents Checklist & Assistance (1 col) -->
+      <div class="space-y-6">
+
+        <!-- Required Documents Checklist -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+          <div class="flex items-center space-x-2 pb-3 mb-4 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+              <i data-lucide="check-square" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-slate-900" id="proofsHeading">Required Proofs &amp; Papers</h4>
+              <p class="text-[11px] text-slate-500" id="proofsSubheading">Carry these before applying</p>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-600 mb-3" id="proofsNotice">
+            Tick the items you have ready in hand:
+          </p>
+
+          <div id="proofsList" class="space-y-2 text-xs">
+            <!-- Dynamic proof items with checkboxes -->
+          </div>
+        </div>
+
+        <!-- Where to Apply Options -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm text-xs space-y-4">
+          <h4 class="font-bold text-sm text-slate-900 pb-2 border-b border-slate-100 flex items-center space-x-2" id="channelHeading">
+            <i data-lucide="map-pin" class="w-4 h-4 text-orange-600"></i>
+            <span>Where Can You Apply? (आवेदन केंद्र)</span>
+          </h4>
+
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-2.5">
+            <span class="p-1 rounded bg-orange-100 text-orange-700 font-bold text-[10px]">1</span>
+            <div>
+              <strong class="text-slate-900 block" id="ch1Title">Self-Service Online Portal</strong>
+              <span class="text-slate-500 text-[11px]" id="ch1Desc">Register on the state e-District / government portal from any smartphone or laptop.</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-2.5">
+            <span class="p-1 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px]">2</span>
+            <div>
+              <strong class="text-slate-900 block" id="ch2Title">Jan Seva Kendra / CSC Center</strong>
+              <span class="text-slate-500 text-[11px]" id="ch2Desc">Visit your nearest Village-Level Entrepreneur (VLE) who will scan documents and apply for you for ₹20-₹30 service fee.</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-2.5">
+            <span class="p-1 rounded bg-blue-100 text-blue-700 font-bold text-[10px]">3</span>
+            <div>
+              <strong class="text-slate-900 block" id="ch3Title">Tehsil / Block Revenue Office</strong>
+              <span class="text-slate-500 text-[11px]" id="ch3Desc">Physical counter at Tehsil office for offline submissions or escalation to Tehsildar / Patwari.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp Shareable Card -->
+        <div class="bg-emerald-50 rounded-3xl border border-emerald-200 p-6 text-xs text-emerald-950">
+          <div class="flex items-center space-x-2 mb-2 font-bold text-sm text-emerald-900">
+            <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+            <span id="waHeading">Share Guide with Family / CSC</span>
+          </div>
+          <p class="text-emerald-800 text-[11px] mb-3 leading-relaxed" id="waDesc">
+            Send the complete document checklist and application steps directly to your family members or CSC operator on WhatsApp.
+          </p>
+          <button onclick="shareOnWhatsApp()" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-sm transition">
+            <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+            <span id="waBtnText">Share on WhatsApp</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between flex-wrap gap-2">
+      <p>Sahayak Welfare Copilot &bull; Document Procurement Assistance Desk</p>
+      <div class="flex space-x-3 text-slate-600">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>&bull;</span>
+        <button onclick="window.print()" class="hover:underline">Print Guide</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Master Documents Guidance Database
+    const DOCUMENTS_DATABASE = {
+      income_certificate: {
+        doc_id: "income_certificate",
+        doc_name: "Income Certificate (आय प्रमाण पत्र)",
+        hindi_name: "आय प्रमाण पत्र",
+        category_tag: "Revenue & Social Welfare",
+        issuing_authority: "Revenue Department (Tehsildar / Sub-Divisional Magistrate)",
+        official_portal_url: "https://edistrict.up.gov.in/",
+        required_proofs: [
+          "Aadhaar Card (Applicant & Family Head)",
+          "Self-declaration affidavit (स्वप्रमाणित घोषणा पत्र)",
+          "Ration Card or Salary Slip / Gram Pradhan verification letter",
+          "Recent Passport-size Photograph (under 50KB)",
+          "Electricity Bill or Water Bill (Proof of Address)"
+        ],
+        processing_time_days: 15,
+        estimated_cost_inr: 30,
+        online_available: true,
+        step_by_step_process: [
+          "Visit the state e-District portal (edistrict.up.gov.in) or go to your nearest Jan Seva Kendra (CSC).",
+          "Create a citizen login account using your mobile number and Aadhaar OTP.",
+          "Navigate to 'Revenue Services' (राजस्व सेवाएँ) and select 'Income Certificate' (आय प्रमाण पत्र हेतु आवेदन).",
+          "Fill applicant details including family members, total monthly income from agriculture, labor, or business.",
+          "Upload scanned copies of Aadhaar, self-declaration affidavit, and passport photograph.",
+          "Pay the official government application fee of ₹30 online via UPI or Net Banking.",
+          "Save the 12-digit Application Number (आवेदन क्रमांक) to track status.",
+          "Area Lekhpal/Patwari conducts field inquiry within 7 days and submits report to Tehsildar.",
+          "Download digitally signed certificate from the portal or collect from CSC center."
+        ]
+      },
+      domicile_certificate: {
+        doc_id: "domicile_certificate",
+        doc_name: "Domicile / Residence Certificate (निवास प्रमाण पत्र)",
+        hindi_name: "निवास प्रमाण पत्र",
+        category_tag: "Revenue & Civil Rights",
+        issuing_authority: "Revenue Department / Sub-Divisional Magistrate (SDM)",
+        official_portal_url: "https://edistrict.up.gov.in/",
+        required_proofs: [
+          "Aadhaar Card with local address",
+          "Electricity Bill, Water Bill, or Gas Connection Passbook",
+          "School Transfer Certificate (TC) or 10th Marksheet showing continuous stay",
+          "Self-declaration confirming 3+ years residence in the state",
+          "Passport-size Photograph"
+        ],
+        processing_time_days: 10,
+        estimated_cost_inr: 30,
+        online_available: true,
+        step_by_step_process: [
+          "Open e-District portal (edistrict.up.gov.in) or visit local CSC Jan Seva Kendra.",
+          "Log in to Citizen Services and select 'Residence Certificate' (निवास प्रमाण पत्र).",
+          "Enter your residential address: House No., Ward/Village, Post Office, Police Station, and Tehsil.",
+          "Upload scanned residential proofs and self-declaration affidavit.",
+          "Pay statutory government fee (₹30) and save payment receipt.",
+          "Patwari/Lekhpal verifies proof of continuous stay in the village/ward records.",
+          "Download digitally signed certificate containing government security QR code."
+        ]
+      },
+      caste_certificate: {
+        doc_id: "caste_certificate",
+        doc_name: "Caste Certificate (जाति प्रमाण पत्र - SC/ST/OBC)",
+        hindi_name: "जाति प्रमाण पत्र",
+        category_tag: "Social Justice & Affirmative Action",
+        issuing_authority: "Tehsildar / District Magistrate",
+        official_portal_url: "https://edistrict.up.gov.in/",
+        required_proofs: [
+          "Aadhaar Card of Applicant",
+          "Ration Card or Parivar Register Nakal (परिवार रजिस्टर नकल)",
+          "Father's or older blood relative's Caste Certificate",
+          "Self-declaration affirming community / sub-caste",
+          "Passport Photograph"
+        ],
+        processing_time_days: 15,
+        estimated_cost_inr: 30,
+        online_available: true,
+        step_by_step_process: [
+          "Log in to state e-District portal or visit nearest CSC center.",
+          "Select 'Certificate Services' > 'Caste Certificate' (जाति प्रमाण पत्र - अनु.जाति / अनु.जनजाति / अन्य पिछड़ा वर्ग).",
+          "Input applicant details, father/mother name, category, and specific sub-caste name.",
+          "Upload proof of lineage (father's certificate, land revenue records, or Parivar Register).",
+          "Submit and pay the official ₹30 application fee.",
+          "Lekhpal verifies community lineage against village census and family tree records.",
+          "Tehsildar digitally approves certificate for lifetime reservation and scholarship eligibility."
+        ]
+      },
+      bank_passbook: {
+        doc_id: "bank_passbook",
+        doc_name: "Bank Account Passbook (Aadhaar & NPCI Linked)",
+        hindi_name: "बैंक पासबुक (डीबीटी / एनपीसीआई लिंक)",
+        category_tag: "Direct Benefit Transfer (DBT)",
+        issuing_authority: "Any Nationalized Bank / India Post Payments Bank (IPPB)",
+        official_portal_url: "https://pmjdy.gov.in/",
+        required_proofs: [
+          "Aadhaar Card (Original + Photocopy)",
+          "PAN Card or Form 60",
+          "2 Recent Passport-size Photographs",
+          "Active Mobile Number for OTP / SMS Alerts"
+        ],
+        processing_time_days: 2,
+        estimated_cost_inr: 0,
+        online_available: false,
+        step_by_step_process: [
+          "Visit nearest bank branch or request India Post Payments Bank (IPPB) postman at your doorstep.",
+          "Fill Account Opening Form (request Zero-Balance PM Jan Dhan Yojana account if low income).",
+          "CRITICAL STEP: Request bank staff to submit the 'NPCI Aadhaar Seeding / DBT Consent Form' (आधार मैपिंग).",
+          "Provide biometric fingerprint verification to link Aadhaar with bank account.",
+          "Collect printed Bank Passbook containing Account Number and IFSC Code.",
+          "Dial *99*99*1# from your registered mobile to verify NPCI Aadhaar mapper status."
+        ]
+      },
+      ration_card: {
+        doc_id: "ration_card",
+        doc_name: "Ration Card (राशन कार्ड - BPL / NFSA / Antyodaya)",
+        hindi_name: "राशन कार्ड (खाद्य सुरक्षा)",
+        category_tag: "Food Security & Civil Supplies",
+        issuing_authority: "Food and Civil Supplies Department (खाद्य एवं रसद विभाग)",
+        official_portal_url: "https://fcs.up.gov.in/",
+        required_proofs: [
+          "Aadhaar Card of all family members",
+          "Income Certificate of family",
+          "Bank passbook copy of the eldest female head of family",
+          "LPG Gas Connection Consumer Number",
+          "Electricity Bill or Address Proof"
+        ],
+        processing_time_days: 30,
+        estimated_cost_inr: 50,
+        online_available: true,
+        step_by_step_process: [
+          "Go to Food & Civil Supplies portal (fcs.up.gov.in) or visit nearest CSC center.",
+          "Select 'NFSA New Ration Card Application' (पात्र गृहस्थी / अंत्योदय).",
+          "Designate female head of household as primary beneficiary with her Aadhaar & bank details.",
+          "Add all dependent family members along with their 12-digit Aadhaar numbers.",
+          "Upload income and residence certificates, submit, and print acknowledgment slip.",
+          "Submit hard copy packet to Regional Supply Inspector (पूर्ति निरीक्षक) or BDO office.",
+          "Field verification conducted by Gram Panchayat / Inspector.",
+          "Download digital ration card slip from NFSA portal once approved."
+        ]
+      },
+      bocw_labor_card: {
+        doc_id: "bocw_labor_card",
+        doc_name: "UP BOCW Shramik Card (भवन एवं सन्निर्माण कर्मकार कार्ड)",
+        hindi_name: "भवन निर्माण श्रमिक कार्ड",
+        category_tag: "Labor Welfare & Social Security",
+        issuing_authority: "UP Building & Other Construction Workers Welfare Board",
+        official_portal_url: "https://upbocw.in/",
+        required_proofs: [
+          "Aadhaar Card",
+          "Bank Passbook (Aadhaar Linked)",
+          "90-Day Construction Work Certificate (certified by contractor or Gram Pradhan)",
+          "Passport-size Photograph",
+          "Nominee Aadhaar Details"
+        ],
+        processing_time_days: 15,
+        estimated_cost_inr: 40,
+        online_available: true,
+        step_by_step_process: [
+          "Visit official labor board portal (upbocw.in) or local CSC / Labour Office.",
+          "Click 'Shramik Panjiyan' (श्रमिक पंजीयन / New Registration).",
+          "Verify mobile number via OTP and enter Aadhaar information.",
+          "Select trade (Mason, Painter, Carpenter, Plumber, Electrician, Helper, Laborer).",
+          "Upload 90-day construction work proof and bank passbook scan.",
+          "Pay nominal registration fee of ₹20 + annual contribution of ₹20 (Total ₹40).",
+          "Labour Enforcement Officer (LEO) inspects and approves application.",
+          "Download official Shramik Identity Card containing registration number and QR code."
+        ]
+      },
+      bonafide_admission_proof: {
+        doc_id: "bonafide_admission_proof",
+        doc_name: "Bonafide Certificate & Fee Receipt (प्रवेश व फीस रसीद)",
+        hindi_name: "कॉलेज बोनाफाइड व फीस रसीद",
+        category_tag: "Higher Education & Scholarships",
+        issuing_authority: "Principal / Registrar of Enrolled Educational Institution",
+        official_portal_url: "https://scholarship.up.gov.in/",
+        required_proofs: [
+          "College Allotment Letter / Admission Confirmation",
+          "Official Fee Deposit Challan / Receipt",
+          "Previous Academic Year Marksheet",
+          "Student Identity Card"
+        ],
+        processing_time_days: 3,
+        estimated_cost_inr: 0,
+        online_available: false,
+        step_by_step_process: [
+          "Visit your college administration / scholarship desk.",
+          "Request Bonafide Certificate on official college letterhead.",
+          "Ensure certificate states your Name, Course, Year/Semester, and Non-Refundable Fee breakdown.",
+          "Obtain official signature and institutional rubber stamp of Principal/Registrar.",
+          "Verify that your College's Master Code (AISHE Code) is active on the state scholarship portal."
+        ]
+      },
+      land_khatauni: {
+        doc_id: "land_khatauni",
+        doc_name: "Land Revenue Record / Khatauni (भूलेख खतौनी / खसरा)",
+        hindi_name: "भूलेख खतौनी / खसरा नकल",
+        category_tag: "Agriculture & Revenue",
+        issuing_authority: "Revenue Board (UP Bhulekh Portal)",
+        official_portal_url: "https://upbhulekh.gov.in/",
+        required_proofs: [
+          "District, Tehsil, and Village (Gram) name",
+          "Khasra / Gata Number (गाटा संख्या) or Landowner's Name"
+        ],
+        processing_time_days: 1,
+        estimated_cost_inr: 15,
+        online_available: true,
+        step_by_step_process: [
+          "Open official portal (upbhulekh.gov.in).",
+          "Select your District, then select Tehsil, then choose your Village name.",
+          "Search by Gata Number (गाटा संख्या), Khasra Number, or Account Holder Name.",
+          "Enter captcha code to view real-time Record of Rights (RoR).",
+          "For bank loans or PM-KISAN verification, click 'Digitally Signed Khatauni' and pay ₹15 fee.",
+          "Download official certified PDF with revenue seal."
+        ]
+      },
+      udid_disability_card: {
+        doc_id: "udid_disability_card",
+        doc_name: "Unique Disability ID / UDID Card (दिव्यांग प्रमाण पत्र)",
+        hindi_name: "दिव्यांगता पहचान पत्र (UDID)",
+        category_tag: "Empowerment & Inclusion",
+        issuing_authority: "Department of Empowerment of Persons with Disabilities",
+        official_portal_url: "https://www.swavlambanstatus.info/",
+        required_proofs: [
+          "Aadhaar Card",
+          "Medical Assessment Records / Hospital Prescriptions",
+          "2 Full-length Disability Photographs",
+          "Proof of Residence"
+        ],
+        processing_time_days: 30,
+        estimated_cost_inr: 0,
+        online_available: true,
+        step_by_step_process: [
+          "Register on official national portal (swavlambancard.gov.in) or visit District Disability Office.",
+          "Enter personal and disability details (Locomotor, Visual, Hearing, Intellectual, etc.).",
+          "Book evaluation appointment with Chief Medical Officer (CMO) at District Civil Hospital.",
+          "Attend physical medical board evaluation for disability percentage assessment.",
+          "Once certified (> 40% benchmarks government welfare eligibility), UDID is approved.",
+          "Download digital e-UDID card immediately; plastic smart card is delivered by speed post."
+        ]
+      },
+      aadhaar_card: {
+        doc_id: "aadhaar_card",
+        doc_name: "Aadhaar Card (आधार कार्ड)",
+        hindi_name: "आधार कार्ड (पहचान प्रमाण)",
+        category_tag: "National Identity Registry",
+        issuing_authority: "UIDAI (Unique Identification Authority of India)",
+        official_portal_url: "https://myaadhaar.uidai.gov.in/",
+        required_proofs: [
+          "Proof of Identity (Voter ID, Passport, PAN Card, School ID)",
+          "Proof of Address (Electricity Bill, Ration Card, Village Pradhan Certificate)",
+          "Date of Birth Proof (Birth Certificate or 10th Marksheet)"
+        ],
+        processing_time_days: 15,
+        estimated_cost_inr: 50,
+        online_available: true,
+        step_by_step_process: [
+          "Book appointment online at myaadhaar.uidai.gov.in or walk into nearest Aadhaar Seva Kendra / Post Office.",
+          "Bring original Proof of Identity (POI) and Proof of Address (POA).",
+          "Submit demographic details and provide 10-finger biometric scan, iris scan, and live photo.",
+          "Collect the 28-digit Enrolment ID (EID) acknowledgement slip.",
+          "Track status online on UIDAI portal and download electronic e-Aadhaar PDF using OTP."
+        ]
+      }
+    };
+
+    // Guide Multilingual Translations
+    const GUIDE_TRANSLATIONS = {
+      en: {
+        navBackText: "← Back to Sahayak Finder",
+        antiFraudTitle: "Citizen Advisory: Say No to Middlemen & Phishing",
+        antiFraudDesc: "Government certificates never require extra bribes. Always verify that the website URL ends in .gov.in or .nic.in. The official statutory fee is strictly fixed by state gazette order.",
+        stepsHeading: "Step-by-Step Application Procedure",
+        stepsSubheading: "Follow this exact sequence to ensure zero rejections",
+        portalCardHeading: "Ready to Apply Online?",
+        portalCardDesc: "Visit the official verified government portal directly. You can fill the form yourself or show this guide to your nearest Common Service Center (CSC) operator.",
+        portalBtnText: "Open Official Portal",
+        proofsHeading: "Required Proofs & Papers",
+        proofsSubheading: "Carry these before applying",
+        proofsNotice: "Tick the items you have ready in hand:",
+        channelHeading: "Where Can You Apply? (आवेदन केंद्र)",
+        waHeading: "Share Guide with Family / CSC",
+        waDesc: "Send the complete document checklist and application steps directly to your family members or CSC operator on WhatsApp.",
+        waBtnText: "Share on WhatsApp"
+      },
+      hi: {
+        navBackText: "← वापस सहायक मुख्य पृष्ठ पर जाएं",
+        antiFraudTitle: "नागरिक चेतावनी: बिचौलियों व दलालों से बचें",
+        antiFraudDesc: "सरकारी प्रमाण पत्र के लिए कभी भी अतिरिक्त रिश्वत न दें। हमेशा ध्यान दें कि वेबसाइट का लिंक .gov.in या .nic.in पर समाप्त होता हो। आधिकारिक सरकारी शुल्क तय है।",
+        stepsHeading: "आवेदन करने की चरणबद्ध प्रक्रिया (Step-by-Step Guide)",
+        stepsSubheading: "आवेदन खारिज होने से बचाने के लिए इस क्रम का पालन करें",
+        portalCardHeading: "क्या आप ऑनलाइन आवेदन के लिए तैयार हैं?",
+        portalCardDesc: "सत्यापित सरकारी पोर्टल पर सीधे जाएँ। आप स्वयं फॉर्म भर सकते हैं या इस गाइड को अपने नजदीकी जन सेवा केंद्र (CSC) संचालक को दिखा सकते हैं।",
+        portalBtnText: "आधिकारिक सरकारी पोर्टल खोलें",
+        proofsHeading: "अनिवार्य दस्तावेज़ एवं प्रमाण (Required Documents)",
+        proofsSubheading: "आवेदन से पहले इन्हें तैयार रखें",
+        proofsNotice: "जो दस्तावेज़ आपके पास तैयार हैं, उन पर टिक करें:",
+        channelHeading: "आप कहाँ आवेदन कर सकते हैं? (Application Centers)",
+        waHeading: "व्हाट्सएप पर परिवार या सीएससी संचालक को भेजें",
+        waDesc: "यह पूरी गाइड और आवश्यक दस्तावेज़ों की सूची एक क्लिक में व्हाट्सएप पर साझा करें।",
+        waBtnText: "व्हाट्सएप पर शेयर करें"
+      },
+      bn: {
+        navBackText: "← মূল সহায়ক পেজে ফিরে যান",
+        antiFraudTitle: "নাগরিক সতর্কতা: দালাল ও প্রতারণা থেকে সাবধান",
+        antiFraudDesc: "সরকারি শংসাপত্রের জন্য কখনও বাড়তি টাকা দেবেন না। ওয়েবসাইট ঠিকানা .gov.in বা .nic.in কিনা যাচাই করুন।",
+        stepsHeading: "আবেদন করার ধাপে ধাপে পদ্ধতি",
+        stepsSubheading: "সঠিক নিয়ম মেনে আবেদন করুন",
+        portalCardHeading: "অনলাইনে আবেদন করতে প্রস্তুত?",
+        portalCardDesc: "সরাসরি সরকারি পোর্টালে যান অথবা আপনার নিকটবর্তী সিএসসি সেন্টারে এই নির্দেশিকা দেখান।",
+        portalBtnText: "অফিসিয়াল পোর্টাল খুলুন",
+        proofsHeading: "প্রয়োজনীয় কাগজপত্র ও প্রমাণ",
+        proofsSubheading: "আবেদনের পূর্বে সাথে রাখুন",
+        proofsNotice: "আপনার কাছে যেগুলি প্রস্তুত আছে তা চিহ্নিত করুন:",
+        channelHeading: "কোথায় আবেদন করবেন?",
+        waHeading: "হোয়াটসঅ্যাপে শেয়ার করুন",
+        waDesc: "সম্পূর্ণ নির্দেশিকা হোয়াটসঅ্যাপে পরিবার বা সিএসসি সেন্টারের সাথে শেয়ার করুন।",
+        waBtnText: "হোয়াটসঅ্যাপে পাঠান"
+      },
+      mr: {
+        navBackText: "← मुख्य सहाय्यक पृष्ठावर परत जा",
+        antiFraudTitle: "नागरिक सूचना: दलालांपासून सावध रहा",
+        antiFraudDesc: "सरकारी प्रमाणपत्रासाठी कोणतीही अतिरिक्त लाच देऊ नका. संकेतस्थळ .gov.in किंवा .nic.in असल्याची खात्री करा.",
+        stepsHeading: "अर्ज करण्याची टप्प्याटप्प्याने पद्धत",
+        stepsSubheading: "अर्ज नामंजूर होऊ नये म्हणून या पद्धतीचा वापर करा",
+        portalCardHeading: "ऑनलाइन अर्ज करण्यास तयार आहात?",
+        portalCardDesc: "थेट अधिकृत सरकारी पोर्टलला भेट द्या किंवा आपल्या जवळच्या ग्राहक सेवा केंद्रात (CSC) ही माहिती दाखवा.",
+        portalBtnText: "अधिकृत पोर्टल उघडा",
+        proofsHeading: "आवश्यक कागदपत्रे व पुरावे",
+        proofsSubheading: "अर्ज करण्यापूर्वी सोबत ठेवा",
+        proofsNotice: "तुमच्याकडे तयार असलेल्या कागदपत्रांवर टिक करा:",
+        channelHeading: "अर्ज कुठे करावा?",
+        waHeading: "व्हॉट्सॲपवर शेअर करा",
+        waDesc: "संपूर्ण माहिती व कागदपत्रांची यादी व्हॉट्सॲपवर कुटुंबियांना पाठवा.",
+        waBtnText: "व्हॉट्सॲपवर पाठवा"
+      },
+      te: {
+        navBackText: "← సహాయక్ ప్రధాన పేజీకి తిరిగి వెళ్లండి",
+        antiFraudTitle: "పౌరుల హెచ్చరిక: మధ్యవర్తుల పట్ల జాగ్రత్త",
+        antiFraudDesc: "ప్రభుత్వ ధృవపత్రాల కోసం ఎటువంటి లంచం ఇవ్వవద్దు. అధికారిక వెబ్‌సైట్ .gov.in లేదా .nic.in అని నిర్ధారించుకోండి.",
+        stepsHeading: "దరఖాస్తు చేసుకోవడానికి దశలవారీ విధానం",
+        stepsSubheading: "తిరస్కరణలను నివారించడానికి ఈ క్రమాన్ని పాటించండి",
+        portalCardHeading: "ఆన్‌లైన్‌లో దరఖాస్తు చేసుకోవడానికి సిద్ధంగా ఉన్నారా?",
+        portalCardDesc: "నేరుగా అధికారిక పోర్టల్‌ను సందర్శించండి లేదా సమీపంలోని సిఎస్‌సి ఆపరేటర్‌కు ఈ గైడ్‌ను చూపించండి.",
+        portalBtnText: "అధికారిక పోర్టల్ తెరవండి",
+        proofsHeading: "అవసరమైన పత్రాలు & రుజువులు",
+        proofsSubheading: "దరఖాస్తు చేయడానికి ముందు సిద్ధంగా ఉంచుకోండి",
+        proofsNotice: "మీ వద్ద సిద్ధంగా ఉన్న పత్రాలను టిక్ చేయండి:",
+        channelHeading: "ఎక్కడ దరఖాస్తు చేయవచ్చు?",
+        waHeading: "వాట్సాప్‌లో షేర్ చేయండి",
+        waDesc: "పూర్తి సమాచారాన్ని మీ కుటుంబ సభ్యులకు వాట్సాప్ ద్వారా పంపండి.",
+        waBtnText: "వాట్సాప్‌లో షేర్ చేయండి"
+      }
+    };
+
+    let currentDocId = 'income_certificate';
+    let currentGuideLang = 'hi';
+
+    function getDocIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('doc') || 'income_certificate';
+    }
+
+    function renderDocumentGuide(docId) {
+      currentDocId = docId;
+      const doc = DOCUMENTS_DATABASE[docId] || DOCUMENTS_DATABASE.income_certificate;
+
+      // Update Top selects
+      document.getElementById('docSelectDropdown').value = doc.doc_id;
+      document.getElementById('mobileDocSelect').value = doc.doc_id;
+
+      // Update Hero Content
+      document.getElementById('guideDocTitle').innerText = doc.doc_name;
+      document.getElementById('metricAuthority').innerText = doc.issuing_authority;
+      document.getElementById('metricTime').innerText = `~${doc.processing_time_days} Days`;
+      document.getElementById('metricFee').innerText = `₹${doc.estimated_cost_inr}`;
+      document.getElementById('guidePortalBtn').href = doc.official_portal_url;
+
+      const onlineBadge = document.getElementById('guideOnlineBadge');
+      if (doc.online_available) {
+        onlineBadge.innerText = "✓ Online Application Available (ई-डिस्ट्रिक्ट)";
+        onlineBadge.className = "inline-block px-3 py-1 bg-emerald-400/30 backdrop-blur-md rounded-full text-xs font-bold tracking-wide";
+      } else {
+        onlineBadge.innerText = "🏛️ Branch / Institutional Visit Required";
+        onlineBadge.className = "inline-block px-3 py-1 bg-blue-400/30 backdrop-blur-md rounded-full text-xs font-bold tracking-wide";
+      }
+
+      // Render Steps Timeline
+      const stepsContainer = document.getElementById('stepsContainer');
+      stepsContainer.innerHTML = '';
+      doc.step_by_step_process.forEach((step, idx) => {
+        const stepCard = document.createElement('div');
+        stepCard.className = "flex items-start space-x-3.5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-orange-50/30 transition";
+        stepCard.innerHTML = `
+          <div class="w-8 h-8 rounded-xl bg-orange-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-sm">
+            ${idx + 1}
+          </div>
+          <div class="flex-1 pt-1">
+            <h5 class="font-bold text-xs sm:text-sm text-slate-900 mb-0.5">Step ${idx + 1}</h5>
+            <p class="text-xs text-slate-700 leading-relaxed">${step}</p>
+          </div>
+        `;
+        stepsContainer.appendChild(stepCard);
+      });
+      document.getElementById('stepsCountBadge').innerText = `${doc.step_by_step_process.length} Steps to Complete`;
+
+      // Render Required Proofs Checklist
+      const proofsList = document.getElementById('proofsList');
+      proofsList.innerHTML = '';
+      doc.required_proofs.forEach((proof, idx) => {
+        const proofRow = document.createElement('label');
+        proofRow.className = "flex items-start space-x-2.5 p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-slate-100/80 cursor-pointer transition";
+        proofRow.innerHTML = `
+          <input type="checkbox" class="mt-0.5 rounded text-orange-600 focus:ring-orange-500">
+          <span class="text-xs text-slate-800 leading-tight">${proof}</span>
+        `;
+        proofsList.appendChild(proofRow);
+      });
+
+      lucide.createIcons();
+    }
+
+    function switchDocumentFromDropdown(docId) {
+      // Update URL without full page reload
+      const url = new URL(window.location);
+      url.searchParams.set('doc', docId);
+      window.history.pushState({}, '', url);
+      renderDocumentGuide(docId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeGuideLanguage(lang) {
+      currentGuideLang = lang;
+      const t = GUIDE_TRANSLATIONS[lang] || GUIDE_TRANSLATIONS.en;
+      Object.keys(t).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = t[id];
+      });
+    }
+
+    function shareOnWhatsApp() {
+      const doc = DOCUMENTS_DATABASE[currentDocId] || DOCUMENTS_DATABASE.income_certificate;
+      const shareText = `*🇮🇳 सहायक (Sahayak) - दस्तावेज़ प्राप्ति गाइड*\n\n` +
+        `📄 *दस्तावेज़:* ${doc.doc_name}\n` +
+        `🏛️ *जारीकर्ता प्राधिकारी:* ${doc.issuing_authority}\n` +
+        `⏱️ *समय सीमा:* ~${doc.processing_time_days} दिन\n` +
+        `💰 *सरकारी शुल्क:* ₹${doc.estimated_cost_inr}\n` +
+        `🔗 *आधिकारिक पोर्टल:* ${doc.official_portal_url}\n\n` +
+        `📋 *आवश्यक कागजात:*\n` + doc.required_proofs.map(p => `• ${p}`).join('\n') + `\n\n` +
+        `💡 _बिचौलियों को अतिरिक्त पैसे न दें।_`;
+
+      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const initialDocId = getDocIdFromUrl();
+      renderDocumentGuide(initialDocId);
+      changeGuideLanguage('hi');
+      document.getElementById('guideLangSelect').value = 'hi';
+    });
+  </script>
+</body>
+</html>

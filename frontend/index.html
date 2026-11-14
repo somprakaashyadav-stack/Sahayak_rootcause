@@ -414,7 +414,7 @@
         </div>
 
         <!-- TAB 2: Missing Document Helpdesk & Cascade -->
-        <div id="tabDocs" class="hidden bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div id="tabDocs" class="hidden bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-5">
           <div class="flex items-center space-x-2.5 text-slate-900 pb-3 border-b border-slate-100">
             <i data-lucide="files" class="w-5 h-5 text-orange-600"></i>
             <div>
@@ -422,8 +422,25 @@
               <p id="missingDocsDeskSub" class="text-xs text-slate-500">Step-by-step government guidelines, issuing authorities, fees, and timelines to obtain required certificates</p>
             </div>
           </div>
-          <div id="missingDocsMasterList" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-            <!-- Dynamically populated document procurement cards -->
+
+          <!-- Highlighted Citizen Missing Documents Callout -->
+          <div id="citizenMissingDocsCallout" class="hidden p-4 rounded-2xl bg-rose-50 border border-rose-200 space-y-3">
+            <div class="flex items-center space-x-2 text-rose-900">
+              <i data-lucide="alert-circle" class="w-4 h-4 text-rose-600 shrink-0"></i>
+              <h5 class="font-bold text-xs" id="citizenMissingDocsHeading">Unavailable Documents for Your Profile:</h5>
+            </div>
+            <div id="citizenMissingDocsList" class="space-y-2">
+              <!-- Dynamically populated with "Here's how to get one" buttons -->
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <h5 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3" id="allDocsCatalogHeading">
+              All Available Certificate Procurement Guides (सभी सरकारी प्रमाण पत्र):
+            </h5>
+            <div id="missingDocsMasterList" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <!-- Dynamically populated document procurement cards -->
+            </div>
           </div>
         </div>
 
@@ -811,11 +828,14 @@
         </div>
       </div>
 
-      <div class="flex space-x-3">
-        <a id="modalPortalLink" href="#" target="_blank" class="flex-1 py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs text-center shadow-md transition">
-          Open Official Portal &rarr;
+      <div class="flex space-x-2">
+        <a id="modalFullGuideLink" href="document-guide.html" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs text-center shadow-md transition flex items-center justify-center space-x-1">
+          <span>Full Guide Page ↗</span>
         </a>
-        <button onclick="closeDocModal()" class="py-2.5 px-4 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
+        <a id="modalPortalLink" href="#" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs text-center shadow-md transition flex items-center justify-center space-x-1">
+          <span>Portal &rarr;</span>
+        </a>
+        <button onclick="closeDocModal()" class="py-2 px-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
           Close
         </button>
       </div>
@@ -1443,6 +1463,7 @@
         pending: "Documents Pending",
         action: "Action Required",
         missingHeader: "Missing Documents (Click for Procurement Guide):",
+        howToGetBtn: "Here's how to get one",
         benefitLabel: "Benefit:",
         predicatesLabel: "Transparent Eligibility Predicates (Why You Qualify):",
         applyBtn: "Apply on Official Portal",
@@ -1455,6 +1476,7 @@
         pending: "दस्तावेज़ लंबित",
         action: "कार्यवाही आवश्यक",
         missingHeader: "लंबित दस्तावेज़ (प्रक्रिया देखने के लिए क्लिक करें):",
+        howToGetBtn: "यहाँ देखें कैसे प्राप्त करें",
         benefitLabel: "लाभ:",
         predicatesLabel: "पारदर्शी पात्रता कारण (आप क्यों पात्र हैं):",
         applyBtn: "आधिकारिक पोर्टल पर आवेदन करें",
@@ -1467,6 +1489,7 @@
         pending: "নথিপত্র বাকি",
         action: "পদক্ষেপ প্রয়োজন",
         missingHeader: "অনুপস্থিত নথিপত্র (নির্দেশিকা দেখতে ক্লিক করুন):",
+        howToGetBtn: "পাওয়ার পদ্ধতি (Here's how to get)",
         benefitLabel: "সুবিধা:",
         predicatesLabel: "স্বচ্ছ যোগ্যতার কারণ (আপনি কেন যোগ্য):",
         applyBtn: "অফিসিয়াল পোর্টালে আবেদন করুন",
@@ -1479,6 +1502,7 @@
         pending: "कागदपत्रे बाकी",
         action: "कृती आवश्यक",
         missingHeader: "अपूर्ण कागदपत्रे (मार्गदर्शनासाठी क्लिक करा):",
+        howToGetBtn: "मिळवण्याची सोपी पद्धत",
         benefitLabel: "फायदा:",
         predicatesLabel: "पारदर्शक पात्रता निकष (तुम्ही का पात्र आहात):",
         applyBtn: "अधिकृत पोर्टलवर अर्ज करा",
@@ -1491,6 +1515,7 @@
         pending: "పత్రాలు పెండింగ్‌లో ఉన్నాయి",
         action: "చర్య అవసరం",
         missingHeader: "తప్పిపోయిన పత్రాలు (గైడ్ కోసం క్లిక్ చేయండి):",
+        howToGetBtn: "పొందే విధానం (How to get)",
         benefitLabel: "ప్రయోజనం:",
         predicatesLabel: "పారదర్శక అర్హత కారణాలు (మీరు ఎందుకు అర్హులు):",
         applyBtn: "అధికారిక పోర్టల్‌లో దరఖాస్తు చేయండి",
@@ -1531,18 +1556,31 @@
           badgeText = `🔴 ${ct.action} (${m.readiness_score}%)`;
         }
 
-        // Missing docs chips
+        // Missing docs list with explicit clickable "Here's how to get one" option
         let missingChipsHtml = '';
         if (m.documents_missing && m.documents_missing.length > 0) {
           missingChipsHtml = `
             <div class="mt-3 pt-3 border-t border-slate-100">
-              <span class="text-xs font-bold text-slate-500 block mb-1.5">${ct.missingHeader}</span>
-              <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs font-bold text-slate-600 block mb-2 flex items-center space-x-1">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-rose-500"></i>
+                <span>${ct.missingHeader}</span>
+              </span>
+              <div class="space-y-1.5">
                 ${m.documents_missing.map(docId => {
-                  return `<button onclick="openDocGuide('${docId}')" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 flex items-center space-x-1 transition">
-                    <i data-lucide="alert-circle" class="w-3 h-3"></i>
-                    <span>${docId.replace(/_/g, ' ').toUpperCase()}</span>
-                  </button>`;
+                  const docObj = docsCatalog[docId] || {};
+                  const docTitle = docObj.doc_name || docId.replace(/_/g, ' ').toUpperCase();
+                  return `
+                    <div class="flex items-center justify-between p-2 rounded-xl bg-rose-50/80 border border-rose-200/90 text-xs gap-2">
+                      <div class="flex items-center space-x-2 min-w-0">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
+                        <span class="font-bold text-slate-800 truncate">${docTitle}</span>
+                      </div>
+                      <a href="document-guide.html?doc=${docId}" target="_blank" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-orange-700 hover:text-white hover:bg-orange-600 border border-orange-200 hover:border-orange-600 flex items-center space-x-1 transition shadow-2xs whitespace-nowrap shrink-0">
+                        <span>${ct.howToGetBtn}</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                      </a>
+                    </div>
+                  `;
                 }).join('')}
               </div>
             </div>
@@ -1602,25 +1640,71 @@
     }
 
     function renderMissingDocsDesk() {
-      const container = document.getElementById('missingDocsMasterList');
-      if (!container) return;
-      container.innerHTML = '';
+      const masterContainer = document.getElementById('missingDocsMasterList');
+      if (!masterContainer) return;
+      masterContainer.innerHTML = '';
 
+      const ct = CARD_TEXTS[currentSelectedLang] || CARD_TEXTS.en;
+
+      // 1. Citizen-specific missing documents callout
+      const calloutEl = document.getElementById('citizenMissingDocsCallout');
+      const listEl = document.getElementById('citizenMissingDocsList');
+      if (calloutEl && listEl && currentMatchResults && currentMatchResults.matches) {
+        // Collect all unique missing documents across matched schemes
+        const citizenMissingSet = new Set();
+        currentMatchResults.matches.forEach(m => {
+          (m.documents_missing || []).forEach(d => citizenMissingSet.add(d));
+        });
+
+        if (citizenMissingSet.size > 0) {
+          calloutEl.classList.remove('hidden');
+          listEl.innerHTML = '';
+          citizenMissingSet.forEach(docId => {
+            const doc = docsCatalog[docId] || { doc_id: docId, doc_name: docId.replace(/_/g, ' ').toUpperCase(), issuing_authority: 'Revenue Department', estimated_cost_inr: 30, processing_time_days: 15 };
+            const item = document.createElement('div');
+            item.className = "flex items-center justify-between p-3 rounded-xl bg-white border border-rose-200 text-xs shadow-2xs gap-3 flex-wrap";
+            item.innerHTML = `
+              <div>
+                <span class="font-bold text-slate-900 block text-xs sm:text-sm">🔴 ${doc.doc_name}</span>
+                <span class="text-[11px] text-slate-500">Authority: <strong>${doc.issuing_authority}</strong> &bull; ~${doc.processing_time_days} Days &bull; Fee: ₹${doc.estimated_cost_inr}</span>
+              </div>
+              <a href="document-guide.html?doc=${doc.doc_id}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1.5 shadow-sm transition whitespace-nowrap">
+                <span>${ct.howToGetBtn}</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            `;
+            listEl.appendChild(item);
+          });
+        } else {
+          calloutEl.classList.add('hidden');
+        }
+      }
+
+      // 2. Master directory of all 10 certificates
       Object.values(docsCatalog).forEach(doc => {
         const card = document.createElement('div');
-        card.className = "p-3.5 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-sm transition";
+        card.className = "p-4 rounded-2xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:shadow-md transition flex flex-col justify-between";
         card.innerHTML = `
-          <div class="flex items-start justify-between mb-1.5">
-            <h5 class="font-bold text-slate-900 text-xs">${doc.doc_name}</h5>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-100 text-orange-800">Fee: ₹${doc.estimated_cost_inr}</span>
+          <div>
+            <div class="flex items-start justify-between mb-1.5 gap-2">
+              <h5 class="font-bold text-slate-900 text-xs">${doc.doc_name}</h5>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-100 text-orange-800 shrink-0">Fee: ₹${doc.estimated_cost_inr}</span>
+            </div>
+            <p class="text-[11px] text-slate-600 mb-3"><strong>Authority:</strong> ${doc.issuing_authority} &bull; ~${doc.processing_time_days} Days</p>
           </div>
-          <p class="text-[11px] text-slate-600 mb-2"><strong>Authority:</strong> ${doc.issuing_authority} &bull; ~${doc.processing_time_days} Days</p>
-          <button onclick="openDocGuide('${doc.doc_id}')" class="w-full py-1.5 rounded bg-slate-200 hover:bg-orange-600 hover:text-white font-semibold text-[11px] transition text-center">
-            View Complete How-To Instructions &rarr;
-          </button>
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100">
+            <a href="document-guide.html?doc=${doc.doc_id}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition text-center flex items-center justify-center space-x-1.5 shadow-xs">
+              <span>${ct.howToGetBtn}</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <button onclick="openDocGuide('${doc.doc_id}')" class="p-2 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-600 transition" title="Quick Preview">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
         `;
-        container.appendChild(card);
+        masterContainer.appendChild(card);
       });
+      lucide.createIcons();
     }
 
     async function loadDocumentsCatalog() {
@@ -1698,6 +1782,8 @@
       document.getElementById('modalTime').innerText = `~${doc.processing_time_days} Days`;
       document.getElementById('modalFee').innerText = `₹${doc.estimated_cost_inr}`;
       document.getElementById('modalPortalLink').href = doc.official_portal_url;
+      const fullGuideLink = document.getElementById('modalFullGuideLink');
+      if (fullGuideLink) fullGuideLink.href = `document-guide.html?doc=${doc.doc_id}`;
 
       const proofsList = document.getElementById('modalProofs');
       proofsList.innerHTML = doc.required_proofs.map(p => `<li>${p}</li>`).join('');

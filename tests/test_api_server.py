@@ -165,6 +165,12 @@ def test_in_memory_api():
     assert b"Sahayak" in b
     print("✓ GET / (Static Web UI index.html) passed")
 
+    # 6. Static Document Guide Page
+    h, b = simulate_request("GET", "/document-guide.html")
+    assert "200 OK" in h
+    assert b"Document Procurement Guide" in b
+    print("✓ GET /document-guide.html passed")
+
     print("\n🚀 ALL IN-MEMORY API TESTS PASSED SUCCESSFULLY!")
 
 
