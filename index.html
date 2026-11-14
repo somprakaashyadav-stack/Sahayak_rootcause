@@ -82,27 +82,27 @@
   <div class="bg-amber-500/10 border-b border-amber-200/60 py-2">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs text-amber-950 flex-wrap gap-2">
       <div class="flex items-center space-x-2">
-        <span class="inline-block px-2 py-0.5 rounded bg-amber-600 text-white font-extrabold text-[10px] uppercase tracking-wider">
+        <span id="researchBadge" class="inline-block px-2 py-0.5 rounded bg-amber-600 text-white font-extrabold text-[10px] uppercase tracking-wider">
           Empirical Research
         </span>
-        <span class="text-[11px] font-medium">
+        <span id="researchStat" class="text-[11px] font-medium">
           <strong>State of Aadhaar & Social Welfare Studies:</strong> Over <strong>28% of eligible vulnerable citizens miss out on benefits</strong> due to document hurdles & complex rules — leading to <strong>₹1.7 Lakh Crore ($20B+) in unclaimed social security</strong> annually.
         </span>
       </div>
       <div class="flex items-center space-x-3 text-[11px] font-semibold text-amber-900">
         <button onclick="openPrivacyModal()" class="hover:underline flex items-center space-x-1">
           <i data-lucide="lock" class="w-3 h-3 text-emerald-700"></i>
-          <span>Privacy & DPDP Act</span>
+          <span id="privacyLinkText">Privacy & DPDP Act</span>
         </button>
         <span>&bull;</span>
         <button onclick="openRisksModal()" class="hover:underline flex items-center space-x-1">
           <i data-lucide="alert-triangle" class="w-3 h-3 text-orange-700"></i>
-          <span>Risks & Mitigations</span>
+          <span id="risksLinkText">Risks & Mitigations</span>
         </button>
         <span>&bull;</span>
         <button onclick="openImpactModal()" class="hover:underline flex items-center space-x-1">
           <i data-lucide="trending-up" class="w-3 h-3 text-blue-700"></i>
-          <span>Impact & Metrics</span>
+          <span id="impactLinkText">Impact & Metrics</span>
         </button>
       </div>
     </div>
@@ -115,17 +115,17 @@
     <div class="mb-6 bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 rounded-2xl p-6 sm:p-7 text-white shadow-xl relative overflow-hidden">
       <div class="relative z-10 max-w-3xl">
         <div class="flex items-center space-x-2 mb-2">
-          <span class="inline-block px-2.5 py-0.5 bg-white/20 backdrop-blur-md rounded-full text-[11px] font-bold uppercase tracking-wide">
+          <span id="heroBadge1" class="inline-block px-2.5 py-0.5 bg-white/20 backdrop-blur-md rounded-full text-[11px] font-bold uppercase tracking-wide">
             Application-Readiness Platform
           </span>
-          <span class="inline-block px-2.5 py-0.5 bg-emerald-400/30 backdrop-blur-md rounded-full text-[11px] font-bold tracking-wide">
+          <span id="heroBadge2" class="inline-block px-2.5 py-0.5 bg-emerald-400/30 backdrop-blur-md rounded-full text-[11px] font-bold tracking-wide">
             100% Rule-Based &bull; 0 Hallucinations
           </span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+        <h2 id="heroTitle" class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
           Don't just search government schemes. Get an instant, step-by-step action plan to apply.
         </h2>
-        <p class="text-orange-100 text-xs sm:text-sm leading-relaxed max-w-2xl">
+        <p id="heroDesc" class="text-orange-100 text-xs sm:text-sm leading-relaxed max-w-2xl">
           Sahayak eliminates the "last-mile dropout" by pairing transparent eligibility matching with automated document cascade resolution, rural voice input, and WhatsApp sharing.
         </p>
       </div>
@@ -140,20 +140,20 @@
       <div class="flex items-center justify-between flex-wrap gap-2">
         <div class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center space-x-1">
           <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
-          <span>Quick Load Demo Personas (1-Click Test):</span>
+          <span id="quickPresetsTitle">Quick Load Demo Personas (1-Click Test):</span>
         </div>
         <div class="flex flex-wrap gap-2">
           <button onclick="loadPersona('sunita')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100 transition">
-            🎓 Sunita (21, UP Student)
+            <span id="btnPresetSunita">🎓 Sunita (21, UP Student)</span>
           </button>
           <button onclick="loadPersona('ramesh')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition">
-            🌾 Ramesh (42, Farmer)
+            <span id="btnPresetRamesh">🌾 Ramesh (42, Farmer)</span>
           </button>
           <button onclick="loadPersona('munni')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition">
-            🏗️ Munni Devi (35, BOCW Laborer)
+            <span id="btnPresetMunni">🏗️ Munni Devi (35, BOCW Laborer)</span>
           </button>
           <button onclick="loadPersona('mohan')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 transition">
-            🛒 Mohan (28, Street Vendor)
+            <span id="btnPresetMohan">🛒 Mohan (28, Street Vendor)</span>
           </button>
         </div>
       </div>
@@ -181,12 +181,12 @@
               <i data-lucide="mic" class="w-4 h-4"></i>
             </div>
             <div>
-              <p class="text-xs font-bold text-slate-900">Rural Voice Note (बोलकर भरें)</p>
-              <p class="text-[11px] text-slate-500">Speak in Hindi or English instead of typing</p>
+              <p id="voiceCardTitle" class="text-xs font-bold text-slate-900">Rural Voice Note (बोलकर भरें)</p>
+              <p id="voiceCardDesc" class="text-[11px] text-slate-500">Speak in Hindi or English instead of typing</p>
             </div>
           </div>
           <button type="button" onclick="openVoiceModal()" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1 shadow-sm transition">
-            <span>बोलें / Speak</span>
+            <span id="voiceCardBtn">बोलें / Speak</span>
             <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -196,11 +196,11 @@
           <!-- Name & Age -->
           <div class="grid grid-cols-3 gap-3">
             <div class="col-span-2">
-              <label class="block font-semibold text-slate-700 mb-1">Citizen Name (नाम)</label>
+              <label id="labelName" class="block font-semibold text-slate-700 mb-1">Citizen Name (नाम)</label>
               <input type="text" id="name" value="Sunita Yadav" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Age (उम्र)</label>
+              <label id="labelAge" class="block font-semibold text-slate-700 mb-1">Age (उम्र)</label>
               <input type="number" id="age" value="21" required min="1" max="100" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
             </div>
           </div>
@@ -208,40 +208,55 @@
           <!-- State & Gender -->
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">State (राज्य)</label>
-              <select id="state" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+              <label id="labelState" class="block font-semibold text-slate-700 mb-1">State (राज्य)</label>
+              <select id="state" onchange="handleSelectChange('state')" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="Uttar Pradesh" selected>Uttar Pradesh (उत्तर प्रदेश)</option>
                 <option value="Madhya Pradesh">Madhya Pradesh (मध्य प्रदेश)</option>
                 <option value="Bihar">Bihar (बिहार)</option>
                 <option value="Rajasthan">Rajasthan (राजस्थान)</option>
                 <option value="Delhi">Delhi (दिल्ली)</option>
+                <option value="other">Other (अन्य राज्य - लिखें)</option>
               </select>
+              <!-- Others Section: State -->
+              <div id="state_other_container" class="hidden mt-1.5">
+                <input type="text" id="state_other" placeholder="Enter State name (राज्य का नाम लिखें)" class="w-full px-2.5 py-1.5 text-xs border border-orange-300 rounded-lg bg-orange-50/50 focus:ring-2 focus:ring-orange-500 outline-none">
+              </div>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Gender (लिंग)</label>
-              <select id="gender" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+              <label id="labelGender" class="block font-semibold text-slate-700 mb-1">Gender (लिंग)</label>
+              <select id="gender" onchange="handleSelectChange('gender')" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="female" selected>Female (महिला)</option>
                 <option value="male">Male (पुरुष)</option>
-                <option value="transgender">Transgender (अन्य)</option>
+                <option value="transgender">Transgender (ट्रांसजेंडर)</option>
+                <option value="other">Other (अन्य लिंग)</option>
               </select>
+              <!-- Others Section: Gender -->
+              <div id="gender_other_container" class="hidden mt-1.5">
+                <input type="text" id="gender_other" placeholder="Specify Gender / Pronouns (लिंग दर्ज करें)" class="w-full px-2.5 py-1.5 text-xs border border-orange-300 rounded-lg bg-orange-50/50 focus:ring-2 focus:ring-orange-500 outline-none">
+              </div>
             </div>
           </div>
 
           <!-- Social Category & Occupation -->
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Social Category (वर्ग)</label>
-              <select id="category" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+              <label id="labelCategory" class="block font-semibold text-slate-700 mb-1">Social Category (वर्ग)</label>
+              <select id="category" onchange="handleSelectChange('category')" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="obc" selected>OBC (अन्य पिछड़ा वर्ग)</option>
                 <option value="sc">SC (अनुसूचित जाति)</option>
                 <option value="st">ST (अनुसूचित जनजाति)</option>
                 <option value="general">General (सामान्य)</option>
                 <option value="ews">EWS (आर्थिक रूप से कमजोर)</option>
+                <option value="other">Other (अन्य श्रेणी / वर्ग)</option>
               </select>
+              <!-- Others Section: Category -->
+              <div id="category_other_container" class="hidden mt-1.5">
+                <input type="text" id="category_other" placeholder="Specify Category / Community (वर्ग दर्ज करें)" class="w-full px-2.5 py-1.5 text-xs border border-orange-300 rounded-lg bg-orange-50/50 focus:ring-2 focus:ring-orange-500 outline-none">
+              </div>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Occupation (पेशा)</label>
-              <select id="occupation" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+              <label id="labelOccupation" class="block font-semibold text-slate-700 mb-1">Occupation (पेशा)</label>
+              <select id="occupation" onchange="handleSelectChange('occupation')" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="student" selected>Student (विद्यार्थी)</option>
                 <option value="farmer">Farmer (किसान)</option>
                 <option value="daily_wage_laborer">Daily-Wage Laborer (श्रमिक)</option>
@@ -249,25 +264,35 @@
                 <option value="self_employed">Self Employed / Artisan</option>
                 <option value="unemployed">Unemployed (बेरोजगार)</option>
                 <option value="retired">Senior / Retired (वृद्ध)</option>
+                <option value="other">Other (अन्य पेशा / कार्य)</option>
               </select>
+              <!-- Others Section: Occupation -->
+              <div id="occupation_other_container" class="hidden mt-1.5">
+                <input type="text" id="occupation_other" placeholder="e.g. Tailor, Driver, Carpenter, Private Job (पेशा लिखें)" class="w-full px-2.5 py-1.5 text-xs border border-orange-300 rounded-lg bg-orange-50/50 focus:ring-2 focus:ring-orange-500 outline-none">
+              </div>
             </div>
           </div>
 
           <!-- Education & Family Income -->
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Education (शिक्षा)</label>
-              <select id="education_level" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+              <label id="labelEducation" class="block font-semibold text-slate-700 mb-1">Education (शिक्षा)</label>
+              <select id="education_level" onchange="handleSelectChange('education')" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="none">No Formal Schooling</option>
                 <option value="secondary">Class 10th Pass</option>
                 <option value="higher_secondary">Class 12th Pass</option>
                 <option value="undergraduate" selected>Undergraduate (Degree)</option>
                 <option value="postgraduate">Postgraduate</option>
                 <option value="diploma">Diploma / ITI</option>
+                <option value="other">Other (अन्य योग्यता / शिक्षा)</option>
               </select>
+              <!-- Others Section: Education -->
+              <div id="education_other_container" class="hidden mt-1.5">
+                <input type="text" id="education_other" placeholder="e.g. PhD, Nursing, B.Ed, Vocational (योग्यता लिखें)" class="w-full px-2.5 py-1.5 text-xs border border-orange-300 rounded-lg bg-orange-50/50 focus:ring-2 focus:ring-orange-500 outline-none">
+              </div>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Annual Income (₹ आय)</label>
+              <label id="labelIncome" class="block font-semibold text-slate-700 mb-1">Annual Income (₹ आय)</label>
               <input type="number" id="annual_income" value="150000" step="10000" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
             </div>
           </div>
@@ -275,7 +300,7 @@
           <!-- Special Status & Ration Card -->
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Ration Card (राशन कार्ड)</label>
+              <label id="labelRationCard" class="block font-semibold text-slate-700 mb-1">Ration Card (राशन कार्ड)</label>
               <select id="ration_card" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                 <option value="apl" selected>White / APL Card</option>
                 <option value="bpl">BPL / NFSA (Yellow/Pink)</option>
@@ -284,39 +309,50 @@
               </select>
             </div>
             <div>
-              <label class="block font-semibold text-slate-700 mb-1">Land (Acres भूमि)</label>
+              <label id="labelLand" class="block font-semibold text-slate-700 mb-1">Land (Acres भूमि)</label>
               <input type="number" id="landholding_acres" value="0.0" step="0.5" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
             </div>
           </div>
 
-          <!-- Existing Documents Checklist -->
+          <!-- Existing Documents Checklist with Other Documents Section -->
           <div class="pt-2 border-t border-slate-100 space-y-2">
-            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Documents Already in Hand:</span>
+            <span id="labelDocsInHand" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Documents Already in Hand:</span>
             <div class="grid grid-cols-2 gap-2 text-xs">
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_aadhaar" checked class="rounded text-orange-600 focus:ring-orange-500">
-                <span>Aadhaar Card</span>
+                <span id="labelDocAadhaar">Aadhaar Card</span>
               </label>
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_bank" checked class="rounded text-orange-600 focus:ring-orange-500">
-                <span>Bank Passbook (NPCI)</span>
+                <span id="labelDocBank">Bank Passbook (NPCI)</span>
               </label>
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_income" class="rounded text-orange-600 focus:ring-orange-500">
-                <span>Income Certificate</span>
+                <span id="labelDocIncome">Income Certificate</span>
               </label>
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_caste" class="rounded text-orange-600 focus:ring-orange-500">
-                <span>Caste Certificate</span>
+                <span id="labelDocCaste">Caste Certificate</span>
               </label>
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_domicile" class="rounded text-orange-600 focus:ring-orange-500">
-                <span>Domicile Certificate</span>
+                <span id="labelDocDomicile">Domicile Certificate</span>
               </label>
               <label class="flex items-center space-x-2">
                 <input type="checkbox" id="doc_bonafide" checked class="rounded text-orange-600 focus:ring-orange-500">
-                <span>College Bonafide/Fee</span>
+                <span id="labelDocBonafide">College Bonafide/Fee</span>
               </label>
+              <!-- Other Documents Toggle -->
+              <label class="flex items-center space-x-2 col-span-2">
+                <input type="checkbox" id="doc_other_toggle" onchange="toggleOtherDocInput()" class="rounded text-orange-600 focus:ring-orange-500">
+                <span id="labelDocOther" class="font-bold text-orange-700">+ Other Documents (अन्य दस्तावेज़ जोड़ें)</span>
+              </label>
+              <!-- Others Section: Documents -->
+              <div id="other_docs_container" class="hidden col-span-2 p-2.5 bg-orange-50/60 rounded-xl border border-orange-200">
+                <label id="labelOtherDocsSpecify" class="block text-[11px] font-bold text-slate-700 mb-1">Specify other documents you possess (comma-separated):</label>
+                <input type="text" id="doc_other_custom" placeholder="e.g. PAN Card, Kisan Credit Card (KCC), Disability UDID, Ration Slip, Electricity Bill" class="w-full px-2.5 py-1.5 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none bg-white">
+                <p id="labelOtherDocsHint" class="text-[10px] text-slate-500 mt-1">Sahayak automatically matches these against scheme eligibility requirements.</p>
+              </div>
             </div>
           </div>
 
@@ -336,18 +372,18 @@
         <!-- Results Header Stats -->
         <div id="resultsBanner" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex items-center justify-between flex-wrap gap-3">
           <div>
-            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Evaluation Summary</span>
+            <span id="evalSummaryTag" class="text-xs font-bold text-slate-400 uppercase tracking-wider">Evaluation Summary</span>
             <h3 id="statHeader" class="text-lg font-extrabold text-slate-900">4 Schemes Unlocked for Sunita</h3>
             <p id="statSub" class="text-xs text-slate-500 mt-0.5">Matched from 15 curated UP & Central schemes using transparent rules</p>
           </div>
           <div class="flex items-center space-x-2">
             <button onclick="saveCurrentPlan()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100 flex items-center space-x-1.5 transition">
               <i data-lucide="bookmark" class="w-3.5 h-3.5"></i>
-              <span>Save Plan</span>
+              <span id="savePlanBtnText">Save Plan</span>
             </button>
             <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center space-x-1">
               <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-              <span>Rule-Verified</span>
+              <span id="ruleVerifiedTag">Rule-Verified</span>
             </span>
           </div>
         </div>
@@ -356,19 +392,19 @@
         <div class="flex border-b border-slate-200 space-x-3 text-xs font-bold flex-wrap">
           <button id="tabSchemesBtn" onclick="switchTab('schemes')" class="pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5">
             <i data-lucide="award" class="w-4 h-4"></i>
-            <span>Matched Schemes (<span id="tabCount">4</span>)</span>
+            <span><span id="tabSchemesLabel">Matched Schemes</span> (<span id="tabCount">4</span>)</span>
           </button>
           <button id="tabDocsBtn" onclick="switchTab('docs')" class="pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5">
             <i data-lucide="file-question" class="w-4 h-4"></i>
-            <span>Missing Document Assistance</span>
+            <span id="tabDocsLabel">Missing Document Assistance</span>
           </button>
           <button id="tabWhatsappBtn" onclick="switchTab('whatsapp')" class="pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5">
             <i data-lucide="message-square" class="w-4 h-4"></i>
-            <span>WhatsApp Action Card</span>
+            <span id="tabWhatsappLabel">WhatsApp Action Card</span>
           </button>
           <button id="tabHindiBtn" onclick="switchTab('hindi')" class="pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5">
             <i data-lucide="languages" class="w-4 h-4"></i>
-            <span>सरल विवरण (Plain Language)</span>
+            <span id="tabHindiLabel">सरल विवरण (Plain Language)</span>
           </button>
         </div>
 
@@ -382,8 +418,8 @@
           <div class="flex items-center space-x-2.5 text-slate-900 pb-3 border-b border-slate-100">
             <i data-lucide="files" class="w-5 h-5 text-orange-600"></i>
             <div>
-              <h4 class="font-bold text-sm">Missing Document Assistance Desk (दस्तावेज़ सहायता केंद्र)</h4>
-              <p class="text-xs text-slate-500">Step-by-step government guidelines, issuing authorities, fees, and timelines to obtain required certificates</p>
+              <h4 id="missingDocsDeskTitle" class="font-bold text-sm">Missing Document Assistance Desk (दस्तावेज़ सहायता केंद्र)</h4>
+              <p id="missingDocsDeskSub" class="text-xs text-slate-500">Step-by-step government guidelines, issuing authorities, fees, and timelines to obtain required certificates</p>
             </div>
           </div>
           <div id="missingDocsMasterList" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
@@ -396,7 +432,7 @@
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center space-x-2 text-emerald-800">
               <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
-              <h4 class="font-bold text-sm">WhatsApp Shareable Card</h4>
+              <h4 id="whatsappCardTitle" class="font-bold text-sm">WhatsApp Shareable Card</h4>
             </div>
             <button onclick="copyWhatsappText()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-sm transition">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
@@ -412,7 +448,7 @@
         <div id="tabHindi" class="hidden bg-amber-50/50 rounded-2xl border border-amber-200 p-6 shadow-sm">
           <div class="flex items-center space-x-2 text-amber-900 mb-3 font-bold text-sm">
             <i data-lucide="sparkles" class="w-5 h-5 text-amber-600"></i>
-            <span>नागरिक मित्र व्याख्या (AI Plain Language Assistant)</span>
+            <span id="plainLangTitle">नागरिक मित्र व्याख्या (AI Plain Language Assistant)</span>
           </div>
           <div class="bg-white rounded-xl border border-amber-200/80 p-5 text-xs text-slate-700 leading-relaxed whitespace-pre-line" id="hindiExplanationText">
             <!-- Plain Explanation renders here -->
@@ -812,58 +848,399 @@
     let citizenSession = null;
     let activePhone = null;
 
-    // Multilingual Translations Dictionary
+    // Handlers for "Other" custom inputs
+    function handleSelectChange(type) {
+      if (type === 'state') {
+        const val = document.getElementById('state').value;
+        const cont = document.getElementById('state_other_container');
+        if (val === 'other') cont.classList.remove('hidden');
+        else cont.classList.add('hidden');
+      } else if (type === 'gender') {
+        const val = document.getElementById('gender').value;
+        const cont = document.getElementById('gender_other_container');
+        if (val === 'other') cont.classList.remove('hidden');
+        else cont.classList.add('hidden');
+      } else if (type === 'category') {
+        const val = document.getElementById('category').value;
+        const cont = document.getElementById('category_other_container');
+        if (val === 'other') cont.classList.remove('hidden');
+        else cont.classList.add('hidden');
+      } else if (type === 'occupation') {
+        const val = document.getElementById('occupation').value;
+        const cont = document.getElementById('occupation_other_container');
+        if (val === 'other') cont.classList.remove('hidden');
+        else cont.classList.add('hidden');
+      } else if (type === 'education') {
+        const val = document.getElementById('education_level').value;
+        const cont = document.getElementById('education_other_container');
+        if (val === 'other') cont.classList.remove('hidden');
+        else cont.classList.add('hidden');
+      }
+    }
+
+    function toggleOtherDocInput() {
+      const checked = document.getElementById('doc_other_toggle').checked;
+      const cont = document.getElementById('other_docs_container');
+      if (checked) cont.classList.remove('hidden');
+      else cont.classList.add('hidden');
+    }
+
+    let currentSelectedLang = 'en';
+
+    // Comprehensive Multilingual Translations Dictionary
     const TRANSLATIONS = {
       en: {
-        subtitle: "Personalized Scheme Discovery & Application-Readiness Plan",
-        citizenProfile: "Citizen Profile (Demographics)",
-        simpleQuestions: "8 Simple questions to determine eligibility",
-        generatePlan: "Generate Application Plan",
-        otpLogin: "OTP Login",
-        verifiedTag: "Rule-Verified",
+        uiSubtitle: "Personalized Scheme Discovery & Application-Readiness Plan",
+        researchBadge: "Empirical Research",
+        researchStat: "<strong>State of Aadhaar & Social Welfare Studies:</strong> Over <strong>28% of eligible vulnerable citizens miss out on benefits</strong> due to document hurdles & complex rules — leading to <strong>₹1.7 Lakh Crore ($20B+) in unclaimed social security</strong> annually.",
+        privacyLinkText: "Privacy & DPDP Act",
+        risksLinkText: "Risks & Mitigations",
+        impactLinkText: "Impact & Metrics",
+        adminAuditLinkText: "Admin Audit",
+        otpAuthLabel: "OTP Login",
+        heroBadge1: "Application-Readiness Platform",
+        heroBadge2: "100% Rule-Based • 0 Hallucinations",
+        heroTitle: "Don't just search government schemes. Get an instant, step-by-step action plan to apply.",
+        heroDesc: "Sahayak eliminates the 'last-mile dropout' by pairing transparent eligibility matching with automated document cascade resolution, rural voice input, and WhatsApp sharing.",
+        quickPresetsTitle: "Quick Load Demo Personas (1-Click Test):",
+        btnPresetSunita: "🎓 Sunita (21, UP Student)",
+        btnPresetRamesh: "🌾 Ramesh (42, UP Farmer)",
+        btnPresetMunni: "🏗️ Munni (35, Laborer)",
+        btnPresetMohan: "🛒 Mohan (28, Vendor)",
+        labelCitizenProfile: "Citizen Profile (Demographics)",
+        labelSimpleQuestions: "8 Simple questions to determine eligibility",
+        voiceCardBtnText: "Voice Note (बोलकर भरें)",
+        labelName: "Citizen Name (नाम)",
+        labelAge: "Age (उम्र)",
+        labelState: "State (राज्य)",
+        labelGender: "Gender (लिंग)",
+        labelCategory: "Social Category (वर्ग)",
+        labelOccupation: "Occupation (पेशा)",
+        labelEducation: "Education (शिक्षा)",
+        labelIncome: "Annual Income (₹ आय)",
+        labelRationCard: "Ration Card (राशन कार्ड)",
+        labelLand: "Land (Acres भूमि)",
+        labelDocsInHand: "Documents Already in Hand:",
+        labelDocAadhaar: "Aadhaar Card",
+        labelDocBank: "Bank Passbook (NPCI)",
+        labelDocIncome: "Income Certificate",
+        labelDocCaste: "Caste Certificate",
+        labelDocDomicile: "Domicile Certificate",
+        labelDocBonafide: "College Bonafide/Fee",
+        labelDocOther: "+ Other Documents (अन्य दस्तावेज़ जोड़ें)",
+        labelOtherDocsSpecify: "Specify other documents you possess (comma-separated):",
+        labelOtherDocsHint: "Sahayak automatically matches these against scheme eligibility requirements.",
+        btnSubmitForm: "Generate Application Plan (योजना खोजें)",
+        readinessPlanTitle: "Readiness Plan",
+        savePlanBtnText: "Save Plan",
+        ruleVerifiedTag: "Rule-Verified",
+        tabSchemesLabel: "Matched Schemes",
+        tabDocsLabel: "Missing Document Assistance",
+        tabWhatsappLabel: "WhatsApp Action Card",
+        tabHindiLabel: "सरल विवरण (Plain Language)",
+        missingDocsDeskTitle: "Missing Document Assistance Desk (दस्तावेज़ सहायता केंद्र)",
+        missingDocsDeskSub: "Step-by-step government guidelines, issuing authorities, fees, and timelines to obtain required certificates",
+        whatsappCardTitle: "WhatsApp Shareable Card",
+        plainLangTitle: "नागरिक मित्र व्याख्या (AI Plain Language Assistant)"
       },
       hi: {
-        subtitle: "व्यक्तिगत सरकारी योजना खोज और आवेदन तैयारी योजना",
-        citizenProfile: "नागरिक विवरण (Citizen Profile)",
-        simpleQuestions: "पात्रता जाँचने के लिए 8 सरल प्रश्न",
-        generatePlan: "आवेदन योजना तैयार करें (Find Schemes)",
-        otpLogin: "ओटीपी लॉगिन (OTP Login)",
-        verifiedTag: "सत्यापित योजनाएं",
+        uiSubtitle: "व्यक्तिगत सरकारी योजना खोज और आवेदन तैयारी योजना",
+        researchBadge: "प्रामाणिक शोध डेटा",
+        researchStat: "<strong>आधार एवं सामाजिक कल्याण अध्ययन:</strong> जटिल नियमों और दस्तावेज़ की कमी के कारण <strong>28% से अधिक पात्र नागरिक योजनाओं से वंचित</strong> रह जाते हैं — सालाना <strong>₹1.7 लाख करोड़ का लाभ अटका</strong> रहता है।",
+        privacyLinkText: "गोपनीयता और डेटा सुरक्षा",
+        risksLinkText: "जोखिम और समाधान",
+        impactLinkText: "प्रभाव और लक्ष्य",
+        adminAuditLinkText: "प्रशासन ऑडिट",
+        otpAuthLabel: "ओटीपी लॉगिन",
+        heroBadge1: "आवेदन-तैयारी मंच",
+        heroBadge2: "100% नियम-आधारित • शून्य भ्रम",
+        heroTitle: "सिर्फ सरकारी योजनाएं न खोजें। तुरंत आवेदन करने की चरणबद्ध कार्य योजना प्राप्त करें।",
+        heroDesc: "सहायक पारदर्शी पात्रता मिलान, दस्तावेज़ समाधान, ग्रामीण वॉइस इनपुट और व्हाट्सएप शेयरिंग के साथ अंतिम छोर तक योजनाएं पहुँचाता है।",
+        quickPresetsTitle: "डेमो प्रोफाइल तुरंत लोड करें (1-क्लिक टेस्ट):",
+        btnPresetSunita: "🎓 सुनीता (21, छात्रा)",
+        btnPresetRamesh: "🌾 रमेश (42, किसान)",
+        btnPresetMunni: "🏗️ मुन्नी (35, श्रमिक)",
+        btnPresetMohan: "🛒 मोहन (28, रेहड़ी पटरी)",
+        labelCitizenProfile: "नागरिक विवरण (Citizen Profile)",
+        labelSimpleQuestions: "पात्रता जाँचने के लिए 8 सरल प्रश्न",
+        voiceCardBtnText: "बोलकर विवरण भरें (Voice Note)",
+        labelName: "नागरिक का नाम",
+        labelAge: "आयु (उम्र)",
+        labelState: "राज्य (State)",
+        labelGender: "लिंग (Gender)",
+        labelCategory: "सामाजिक श्रेणी / वर्ग",
+        labelOccupation: "व्यवसाय / पेशा",
+        labelEducation: "शैक्षणिक योग्यता",
+        labelIncome: "वार्षिक पारिवारिक आय (₹)",
+        labelRationCard: "राशन कार्ड का प्रकार",
+        labelLand: "कृषि भूमि (एकड़)",
+        labelDocsInHand: "हाथ में उपलब्ध दस्तावेज़:",
+        labelDocAadhaar: "आधार कार्ड",
+        labelDocBank: "बैंक पासबुक (डीबीटी एक्टिव)",
+        labelDocIncome: "आय प्रमाण पत्र",
+        labelDocCaste: "जाति प्रमाण पत्र",
+        labelDocDomicile: "निवास प्रमाण पत्र",
+        labelDocBonafide: "कॉलेज बोनाफाइड / फीस रसीद",
+        labelDocOther: "+ अन्य दस्तावेज़ जोड़ें",
+        labelOtherDocsSpecify: "अन्य दस्तावेज़ दर्ज करें (अल्पविराम से अलग करें):",
+        labelOtherDocsHint: "सहायक स्वचालित रूप से योजना आवश्यकताओं के साथ इनका मिलान करेगा।",
+        btnSubmitForm: "आवेदन योजना तैयार करें (Find Schemes)",
+        readinessPlanTitle: "आवेदन तैयारी योजना",
+        savePlanBtnText: "योजना सहेजें",
+        ruleVerifiedTag: "सत्यापित नियम",
+        tabSchemesLabel: "पात्र योजनाएं",
+        tabDocsLabel: "दस्तावेज़ सहायता केंद्र",
+        tabWhatsappLabel: "व्हाट्सएप एक्शन कार्ड",
+        tabHindiLabel: "सरल विवरण (Plain Language)",
+        missingDocsDeskTitle: "दस्तावेज़ सहायता केंद्र (Missing Document Desk)",
+        missingDocsDeskSub: "आवश्यक प्रमाण पत्र प्राप्त करने के लिए चरणबद्ध सरकारी दिशानिर्देश, प्राधिकारी, शुल्क और समय सीमा",
+        whatsappCardTitle: "व्हाट्सएप पर शेयर करने योग्य कार्ड",
+        plainLangTitle: "नागरिक मित्र व्याख्या (AI Plain Language Assistant)"
       },
       bn: {
-        subtitle: "ব্যক্তিগতকৃত সরকারি প্রকল্প আবিষ্কার ও আবেদন প্রস্তুতি",
-        citizenProfile: "নাগরিক বিবরণ (Citizen Profile)",
-        simpleQuestions: "যোগ্যতা যাচাই করার জন্য ৮টি সহজ প্রশ্ন",
-        generatePlan: "আবেদন পরিকল্পনা তৈরি করুন",
-        otpLogin: "ওটিপি লগইন",
-        verifiedTag: "যাচাইকৃত প্রকল্প",
+        uiSubtitle: "ব্যক্তিগতকৃত সরকারি প্রকল্প আবিষ্কার ও আবেদন প্রস্তুতি",
+        researchBadge: "বাস্তব গবেষণা তথ্য",
+        researchStat: "<strong>আধার ও সমাজকল্যাণ সমীক্ষা:</strong> জটিল নিয়ম ও নথির অভাবে <strong>২৮% এরও বেশি যোগ্য নাগরিক সুবিধা থেকে বঞ্চিত</strong> হন — বার্ষিক <strong>১.৭ লাখ কোটি টাকার সামাজিক নিরাপত্তা দাবিহীন</strong> থাকে।",
+        privacyLinkText: "গোপনীয়তা ও তথ্য সুরক্ষা",
+        risksLinkText: "ঝুঁকি ও প্রতিকার",
+        impactLinkText: "প্রভাব ও পরিমাপ",
+        adminAuditLinkText: "প্রশাসন নিরীক্ষা",
+        otpAuthLabel: "ওটিপি লগইন",
+        heroBadge1: "আবেদন-প্রস্তুতি প্ল্যাটফর্ম",
+        heroBadge2: "১০০% নিয়ম-ভিত্তিক • শূন্য বিভ্রান্তি",
+        heroTitle: "শুধু সরকারি প্রকল্প খুঁজবেন না। সরাসরি আবেদন করার পদক্ষেপভিত্তিক কর্মপরিকল্পনা পান।",
+        heroDesc: "সহায়ক স্বচ্ছ যোগ্যতা মূল্যায়ন, নথি সমাধান, গ্রামীণ ভয়েস ইনপুট এবং হোয়াটসঅ্যাপ শেয়ারিংয়ের মাধ্যমে সুবিধা নিশ্চিত করে।",
+        quickPresetsTitle: "ডেমো প্রোফাইল লোড করুন (১-ক্লিক টেস্ট):",
+        btnPresetSunita: "🎓 সুনীতা (২১, ছাত্রী)",
+        btnPresetRamesh: "🌾 রমেশ (৪২, কৃষক)",
+        btnPresetMunni: "🏗️ মুন্নি (৩৫, নির্মাণ শ্রমিক)",
+        btnPresetMohan: "🛒 মোহন (২৮, হকার)",
+        labelCitizenProfile: "নাগরিক তথ্য (Citizen Profile)",
+        labelSimpleQuestions: "যোগ্যতা যাচাই করতে ৮টি সহজ প্রশ্ন",
+        voiceCardBtnText: "ভয়েস দিয়ে পূরণ করুন",
+        labelName: "নাগরিকের নাম",
+        labelAge: "বয়স",
+        labelState: "রাজ্য",
+        labelGender: "লিঙ্গ",
+        labelCategory: "সামাজিক শ্রেণি / বর্গ",
+        labelOccupation: "পেশা / জীবিকা",
+        labelEducation: "শিক্ষাগত যোগ্যতা",
+        labelIncome: "বার্ষিক পারিবারিক আয় (₹)",
+        labelRationCard: "রেশন কার্ড",
+        labelLand: "জমির পরিমাণ (একর)",
+        labelDocsInHand: "হাতে থাকা নথিপত্র:",
+        labelDocAadhaar: "আধার কার্ড",
+        labelDocBank: "ব্যাংক পাসবই (ডিবিটি)",
+        labelDocIncome: "আয় সনদপত্র",
+        labelDocCaste: "জাতি সনদপত্র",
+        labelDocDomicile: "স্থায়ী বাসিন্দা সনদ",
+        labelDocBonafide: "কলেজ বোনাসাইড / ফি রসিদ",
+        labelDocOther: "+ অন্যান্য নথি যোগ করুন",
+        labelOtherDocsSpecify: "আপনার অন্যান্য নথিপত্র উল্লেখ করুন (কমা দিয়ে পৃথক করুন):",
+        labelOtherDocsHint: "সহায়ক স্বয়ংক্রিয়ভাবে স্কিম যোগ্যতার সাথে এই নথিগুলি মেলাবে।",
+        btnSubmitForm: "আবেদন পরিকল্পনা তৈরি করুন",
+        readinessPlanTitle: "প্রস্তুতি পরিকল্পনা",
+        savePlanBtnText: "পরিকল্পনা সংরক্ষণ",
+        ruleVerifiedTag: "যাচাইকৃত নিয়ম",
+        tabSchemesLabel: "যোগ্য প্রকল্পসমূহ",
+        tabDocsLabel: "অনুপস্থিত নথি সহায়তা",
+        tabWhatsappLabel: "হোয়াটসঅ্যাপ অ্যাকশন কার্ড",
+        tabHindiLabel: "সহজ ভাষার বিবরণ",
+        missingDocsDeskTitle: "অনুপস্থিত নথি সহায়তা কেন্দ্র",
+        missingDocsDeskSub: "প্রয়োজনীয় শংসাপত্র পাওয়ার জন্য ধাপে ধাপে সরকারি নির্দেশিকা, ফি ও সময়সীমা",
+        whatsappCardTitle: "হোয়াটসঅ্যাপ শেয়ারিং কার্ড",
+        plainLangTitle: "নাগরিক মিত্র ব্যাখ্যা (সহজ বিবরণ)"
       },
       mr: {
-        subtitle: "वैयक्तिकृत सरकारी योजना शोध आणि अर्ज तयारी योजना",
-        citizenProfile: "नागरिक तपशील (Citizen Profile)",
-        simpleQuestions: "पात्रता तपासण्यासाठी ८ सोपे प्रश्न",
-        generatePlan: "योजना शोधा आणि अर्ज तयार करा",
-        otpLogin: "ओटीपी लॉगिन",
-        verifiedTag: "पडताळणीकृत योजना",
+        uiSubtitle: "वैयक्तिकृत सरकारी योजना शोध आणि अर्ज तयारी योजना",
+        researchBadge: "वस्तुनिष्ठ संशोधन माहिती",
+        researchStat: "<strong>आधार व सामाजिक कल्याण अभ्यास:</strong> कागदपत्रांच्या अडचणींमुळे <strong>२८% हून अधिक पात्र नागरिक लाभापासून वंचित</strong> राहतात — वार्षिक <strong>₹१.७ लाख कोटींचा लाभ अडकून</strong> पडतो.",
+        privacyLinkText: "गोपनीयता व डेटा संरक्षण",
+        risksLinkText: "धोके व निवारण",
+        impactLinkText: "प्रभाव आणि उद्दिष्टे",
+        adminAuditLinkText: "प्रशासन ऑडिट",
+        otpAuthLabel: "ओटीपी लॉगिन",
+        heroBadge1: "अर्ज-तयारी व्यासपीठ",
+        heroBadge2: "१००% नियम-आधारित • शून्य चूक",
+        heroTitle: "फक्त सरकारी योजना शोधू नका. थेट अर्ज करण्यासाठी टप्प्याटप्प्याने कृती आराखडा मिळवा.",
+        heroDesc: "सहायक पारदर्शक पात्रता पडताळणी, कागदपत्र मार्गदर्शन, ग्रामीण व्हॉइस इनपुट आणि व्हॉट्सॲप शेअरिंगद्वारे प्रत्येक नागरिकापर्यंत योजना पोहोचवतो.",
+        quickPresetsTitle: "डेमो प्रोफाईल त्वरित लोड करा (१-क्लिक चाचणी):",
+        btnPresetSunita: "🎓 सुनिता (२१, विद्यार्थिनी)",
+        btnPresetRamesh: "🌾 रमेश (४२, शेतकरी)",
+        btnPresetMunni: "🏗️ मुन्नी (३५, मजूर)",
+        btnPresetMohan: "🛒 मोहन (२८, फेरीवाला)",
+        labelCitizenProfile: "नागरिक तपशील (Citizen Profile)",
+        labelSimpleQuestions: "पात्रता तपासण्यासाठी ८ सोपे प्रश्न",
+        voiceCardBtnText: "बोलून माहिती भरा (Voice Note)",
+        labelName: "नागरिकाचे नाव",
+        labelAge: "वय (वर्षे)",
+        labelState: "राज्य",
+        labelGender: "लिंग",
+        labelCategory: "सामाजिक प्रवर्ग",
+        labelOccupation: "व्यवसाय / काम",
+        labelEducation: "शिक्षण",
+        labelIncome: "वार्षिक कौटुंबिक उत्पन्न (₹)",
+        labelRationCard: "रेशन कार्ड",
+        labelLand: "शेती जमीन (एकर)",
+        labelDocsInHand: "उपलब्ध असलेली कागदपत्रे:",
+        labelDocAadhaar: "आधार कार्ड",
+        labelDocBank: "बँक पासबुक (डीबीटी)",
+        labelDocIncome: "उत्पन्नाचा दाखला",
+        labelDocCaste: "जातीचा दाखला",
+        labelDocDomicile: "अधिवास दाखला (Domicile)",
+        labelDocBonafide: "कॉलेज बोनाफाईड / पावती",
+        labelDocOther: "+ इतर कागदपत्रे जोडा",
+        labelOtherDocsSpecify: "इतर कागदपत्रे प्रविष्ट करा (स्वल्पविरामाने वेगळे करा):",
+        labelOtherDocsHint: "सहायक योजनेच्या पात्रतेनुसार या कागदपत्रांची पडताळणी करेल.",
+        btnSubmitForm: "योजना शोधा आणि अर्ज तयार करा",
+        readinessPlanTitle: "तयारी आराखडा",
+        savePlanBtnText: "प्लॅन सेव्ह करा",
+        ruleVerifiedTag: "पडताळणीकृत नियम",
+        tabSchemesLabel: "पात्र योजना",
+        tabDocsLabel: "कागदपत्र सहाय्य केंद्र",
+        tabWhatsappLabel: "व्हॉट्सॲप ॲक्शन कार्ड",
+        tabHindiLabel: "सोप्या भाषेतील तपशील",
+        missingDocsDeskTitle: "कागदपत्र सहाय्य केंद्र (Missing Documents Desk)",
+        missingDocsDeskSub: "आवश्यक प्रमाणपत्रे मिळवण्यासाठी अधिकृत सरकारी मार्गदर्शक तत्त्वे, फी आणि कालावधी",
+        whatsappCardTitle: "व्हॉट्सॲप शेअरिंग कार्ड",
+        plainLangTitle: "नागरिक मित्र व्याख्या (AI Assistant)"
       },
       te: {
-        subtitle: "వ్యక్తిగతీకరించిన సంక్షేమ పథకాల గుర్తింపు మరియు దరఖాస్తు ప్రణాళిక",
-        citizenProfile: "పౌరుల వివరాలు (Citizen Profile)",
-        simpleQuestions: "అర్హతను నిర్ణయించడానికి 8 సాధారణ ప్రశ్నలు",
-        generatePlan: "పథకాలను కనుగొనండి",
-        otpLogin: "OTP లాగిన్",
-        verifiedTag: "ధృవీకరించబడిన పథకాలు",
+        uiSubtitle: "వ్యక్తిగతీకరించిన సంక్షేమ పథకాల గుర్తింపు మరియు దరఖాస్తు ప్రణాళిక",
+        researchBadge: "వాస్తవ పరిశోధన డేటా",
+        researchStat: "<strong>ఆధార్ & సామాజిక సంక్షేమ అధ్యయనాలు:</strong> క్లిష్టమైన నియమాలు మరియు పత్రాల లోపం వల్ల <strong>28% కంటే ఎక్కువ మంది అర్హులైన పౌరులు ప్రయోజనాలను కోల్పోతున్నారు</strong> — ఏటా <strong>₹1.7 లక్షల కోట్ల సంక్షేమ నిధులు లబ్ధిదారులకు చేరడం లేదు</strong>.",
+        privacyLinkText: "గోప్యత & డేటా భద్రత",
+        risksLinkText: "ప్రమాదాలు & నివారణలు",
+        impactLinkText: "ప్రభావం & కొలమానాలు",
+        adminAuditLinkText: "అడ్మిన్ ఆడిట్",
+        otpAuthLabel: "OTP లాగిన్",
+        heroBadge1: "దరఖాస్తు సంసిద్ధత వేదిక",
+        heroBadge2: "100% నిబంధనల ఆధారితం • ఖచ్చితమైన సమాచారం",
+        heroTitle: "ప్రభుత్వ పథకాలను కేవలం శోధించడం మాత్రమే కాదు. దరఖాస్తు చేసుకోవడానికి తక్షణ కార్యాచరణ ప్రణాళికను పొందండి.",
+        heroDesc: "సహాయక్ పారదర్శక అర్హత పరిశీలన, పత్రాల పరిష్కారం, గ్రామీణ వాయిస్ ఇన్‌పుట్ మరియు వాట్సాప్ షేరింగ్ ద్వారా చివరి మైలు వరకు సంక్షేమ పథకాలను చేరవేస్తుంది.",
+        quickPresetsTitle: "డెమో ప్రొఫైల్‌లను లోడ్ చేయండి (1-క్లిక్ టెస్ట్):",
+        btnPresetSunita: "🎓 సునీత (21, విద్యార్థిని)",
+        btnPresetRamesh: "🌾 రమేష్ (42, రైతు)",
+        btnPresetMunni: "🏗️ మున్నీ (35, కూలీ)",
+        btnPresetMohan: "🛒 మోహన్ (28, వీధి వ్యాపారి)",
+        labelCitizenProfile: "పౌరుల వివరాలు (Citizen Profile)",
+        labelSimpleQuestions: "అర్హతను నిర్ణయించడానికి 8 సాధారణ ప్రశ్నలు",
+        voiceCardBtnText: "మాట్లాడి వివరాలు నమోదు చేయండి",
+        labelName: "పౌరుడి పేరు",
+        labelAge: "వయస్సు",
+        labelState: "రాష్ట్రం",
+        labelGender: "లింగం",
+        labelCategory: "సామాజిక వర్గం",
+        labelOccupation: "వృత్తి",
+        labelEducation: "విద్యార్హత",
+        labelIncome: "వార్షిక కుటుంబ ఆదాయం (₹)",
+        labelRationCard: "రేషన్ కార్డు రకం",
+        labelLand: "భూమి (ఎకరాలు)",
+        labelDocsInHand: "ఇప్పటికే అందుబాటులో ఉన్న పత్రాలు:",
+        labelDocAadhaar: "ఆధార్ కార్డు",
+        labelDocBank: "బ్యాంక్ పాస్‌బుక్ (DBT)",
+        labelDocIncome: "ఆదాయ ధృవీకరణ పత్రం",
+        labelDocCaste: "కుల ధృవీకరణ పత్రం",
+        labelDocDomicile: "నివాస ధృవీకరణ పత్రం",
+        labelDocBonafide: "బోనఫైడ్ / ఫీజు రశీదు",
+        labelDocOther: "+ ఇతర పత్రాలను జోడించండి",
+        labelOtherDocsSpecify: "మీ వద్ద ఉన్న ఇతర పత్రాలను నమోదు చేయండి (కామాతో వేరు చేయండి):",
+        labelOtherDocsHint: "సహాయక్ పథకం అర్హత ప్రకారం ఈ పత్రాలను సరిపోలుస్తుంది.",
+        btnSubmitForm: "పథకాలను కనుగొనండి (Find Schemes)",
+        readinessPlanTitle: "సంసిద్ధత ప్రణాళిక",
+        savePlanBtnText: "ప్లాన్ సేవ్ చేయండి",
+        ruleVerifiedTag: "నిబంధనల ధృవీకరణ",
+        tabSchemesLabel: "అర్హత కలిగిన పథకాలు",
+        tabDocsLabel: "తప్పిపోయిన పత్రాల సహాయం",
+        tabWhatsappLabel: "వాట్సాప్ కార్యాచరణ కార్డు",
+        tabHindiLabel: "సరళ భాషా వివరణ",
+        missingDocsDeskTitle: "పత్రాల సహాయ కేంద్రం (Missing Documents Desk)",
+        missingDocsDeskSub: "అవసరమైన ధృవపత్రాలను పొందడానికి దశలవారీ ప్రభుత్వ మార్గదర్శకాలు, రుసుములు మరియు కాలపరిమితి",
+        whatsappCardTitle: "వాట్సాప్ షేర్ చేయగల కార్డ్",
+        plainLangTitle: "పౌర సహాయక వివరణ (AI Assistant)"
+      }
+    };
+
+    const SELECT_OPTIONS_TRANSLATIONS = {
+      gender: {
+        female: { en: "Female (महिला)", hi: "महिला (Female)", bn: "মহিলা (Female)", mr: "महिला (Female)", te: "మహిళ (Female)" },
+        male: { en: "Male (पुरुष)", hi: "पुरुष (Male)", bn: "পুরুষ (Male)", mr: "पुरुष (Male)", te: "పురుషుడు (Male)" },
+        transgender: { en: "Transgender (ट्रांसजेंडर)", hi: "ट्रांसजेंडर (Transgender)", bn: "রূপান্তরকামী", mr: "तृतीयपंथी", te: "ట్రాన్స్‌జెండర్" },
+        other: { en: "Other (अन्य लिंग)", hi: "अन्य लिंग (Other)", bn: "অন্যান্য (Other)", mr: "इतर (Other)", te: "ఇతర (Other)" }
+      },
+      category: {
+        obc: { en: "OBC (Other Backward Class)", hi: "अन्य पिछड़ा वर्ग (OBC)", bn: "অন্যান্য অনগ্রসর শ্রেণি (OBC)", mr: "इतर मागासवर्ग (OBC)", te: "ఇతర వెనుకబడిన తరగతులు (OBC)" },
+        sc: { en: "SC (Scheduled Caste)", hi: "अनुसूचित जाति (SC)", bn: "তপশিলি জাতি (SC)", mr: "अनुसूचित जाती (SC)", te: "షెడ్యూల్డ్ కులాలు (SC)" },
+        st: { en: "ST (Scheduled Tribe)", hi: "अनुसूचित जनजाति (ST)", bn: "তপশিলি উপজাতি (ST)", mr: "अनुसूचित जमाती (ST)", te: "షెడ్యూల్డ్ తెగలు (ST)" },
+        general: { en: "General (सामान्य)", hi: "सामान्य वर्ग (General)", bn: "সাধারণ (General)", mr: "खुला प्रवर्ग (General)", te: "జనరల్ కేటగిరీ (General)" },
+        ews: { en: "EWS (Economically Weaker)", hi: "आर्थिक रूप से कमजोर (EWS)", bn: "অর্থনৈতিকভাবে দুর্বল (EWS)", mr: "आर्थिक दुर्बल घटक (EWS)", te: "ఆర్థిక బలహీన వర్గాలు (EWS)" },
+        other: { en: "Other (अन्य श्रेणी / वर्ग)", hi: "अन्य श्रेणी / वर्ग (Other)", bn: "অন্যান্য শ্রেণি (Other)", mr: "इतर प्रवर्ग (Other)", te: "ఇతర వర్గం (Other)" }
+      },
+      occupation: {
+        student: { en: "Student (विद्यार्थी)", hi: "विद्यार्थी / छात्र (Student)", bn: "শিক্ষার্থী (Student)", mr: "विद्यार्थी (Student)", te: "విద్యార్థి (Student)" },
+        farmer: { en: "Farmer (किसान)", hi: "किसान / कृषक (Farmer)", bn: "কৃষক (Farmer)", mr: "शेतकरी (Farmer)", te: "రైతు (Farmer)" },
+        daily_wage_laborer: { en: "Daily-Wage Laborer (श्रमिक)", hi: "दैनिक वेतनभोगी श्रमिक (Laborer)", bn: "দৈনিক মজুর (Laborer)", mr: "रोजंदारी मजूर (Laborer)", te: "దినసరి కూలీ (Laborer)" },
+        street_vendor: { en: "Street Vendor (रेहड़ी पटरी)", hi: "रेहड़ी-पटरी / स्ट्रीट वेंडर", bn: "রাস্তার হকার (Street Vendor)", mr: "फेरीवाला (Street Vendor)", te: "వీధి వ్యాపారి (Vendor)" },
+        self_employed: { en: "Self Employed / Artisan", hi: "स्वरोजगार / कारीगर", bn: "স্বনিযুক্ত / কারিগর", mr: "स्वयंरोजगार / कारागीर", te: "స్వయం ఉపాధి / చేతివృత్తి" },
+        unemployed: { en: "Unemployed (बेरोजगार)", hi: "बेरोजगार (Unemployed)", bn: "বেকার (Unemployed)", mr: "बेरोजगार (Unemployed)", te: "నిరుద్యోగి (Unemployed)" },
+        retired: { en: "Senior Citizen / Retired (वृद्ध)", hi: "वरिष्ठ नागरिक / सेवानिवृत्त", bn: "প্রবীণ নাগরিক / অবসরপ্রাপ্ত", mr: "ज्येष्ठ नागरिक / सेवानिवृत्त", te: "వయోవృద్ధుడు / విశ్రాంత" },
+        other: { en: "Other (अन्य पेशा / कार्य)", hi: "अन्य पेशा / कार्य (Other)", bn: "অন্যান্য পেশা (Other)", mr: "इतर व्यवसाय (Other)", te: "ఇతర వృత్తి (Other)" }
+      },
+      education_level: {
+        none: { en: "No Formal Schooling", hi: "कोई औपचारिक शिक्षा नहीं", bn: "প্রাতিষ্ঠানিক শিক্ষা নেই", mr: "कोणतेही औपचारिक शिक्षण नाही", te: "ఎలాంటి చదువు లేదు" },
+        secondary: { en: "Class 10th Pass", hi: "10वीं कक्षा उत्तीर्ण (Secondary)", bn: "১০ম শ্রেণি উত্তীর্ণ", mr: "१० वी उत्तीर्ण", te: "10వ తరగతి ఉత్తీర్ణత" },
+        higher_secondary: { en: "Class 12th Pass", hi: "12वीं कक्षा उत्तीर्ण (12th)", bn: "১২ম শ্রেণি উত্তীর্ণ", mr: "१२ वी उत्तीर्ण", te: "12వ తరగతి ఉత్తీర్ణత" },
+        undergraduate: { en: "Undergraduate (Degree)", hi: "स्नातक (College Degree)", bn: "স্নাতক (Undergraduate)", mr: "पदवीधर (Undergraduate)", te: "డిగ్రీ (Undergraduate)" },
+        postgraduate: { en: "Postgraduate (Master's)", hi: "परास्नातक (Postgraduate)", bn: "স্নাতকোত্তর (Postgraduate)", mr: "पदव्युत्तर (Postgraduate)", te: "పోస్ట్ గ్రాడ్యుయేట్" },
+        diploma: { en: "Diploma / ITI", hi: "डिप्लोमा / आईटीआई (Diploma)", bn: "ডিপ্লোমা / আইটিআই", mr: "डिप्लोमा / आयटीआय", te: "డిప్లొమా / ITI" },
+        other: { en: "Other (अन्य योग्यता)", hi: "अन्य योग्यता (Other)", bn: "অন্যান্য যোগ্যতা (Other)", mr: "इतर शिक्षण (Other)", te: "ఇతర విద్యార్హత (Other)" }
+      },
+      ration_card: {
+        apl: { en: "White / APL Card", hi: "सफेद / एपीएल कार्ड", bn: "সাদা / এপিএল কার্ড", mr: "पांढरे / एपीएल कार्ड", te: "తెల్ల / APL కార్డు" },
+        bpl: { en: "BPL / NFSA (Yellow/Pink)", hi: "बीपीएल / खाद्य सुरक्षा कार्ड", bn: "বিপিএল / খাদ্য সুরক্ষা কার্ড", mr: "पिवळे / बीपीएल रेशन कार्ड", te: "బీపీఎల్ / రేషన్ కార్డు" },
+        aay: { en: "Antyodaya (AAY - Red)", hi: "अंत्योदय (एएवाई - लाल कार्ड)", bn: "অন্ত্যোদয় (এএওয়াই কার্ড)", mr: "अंत्योदय (एएवाय - लाल कार्ड)", te: "అంత్యోదయ (AAY కార్డు)" },
+        none: { en: "No Ration Card", hi: "कोई राशन कार्ड नहीं", bn: "রেশন কার্ড নেই", mr: "रेशन कार्ड नाही", te: "రేషన్ కార్డు లేదు" }
       }
     };
 
     function changeLanguage(lang) {
+      currentSelectedLang = lang;
       const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
-      document.getElementById('uiSubtitle').innerText = t.subtitle;
-      document.getElementById('labelCitizenProfile').innerText = t.citizenProfile;
-      document.getElementById('labelSimpleQuestions').innerText = t.simpleQuestions;
-      document.getElementById('btnSubmitForm').innerText = t.generatePlan;
-      if (!citizenSession) {
-        document.getElementById('otpAuthLabel').innerText = t.otpLogin;
+
+      // Update text or innerHTML of elements by ID
+      Object.keys(t).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (id === 'researchStat') {
+            el.innerHTML = t[id];
+          } else {
+            el.innerText = t[id];
+          }
+        }
+      });
+
+      // Preserve OTP login label if logged in
+      if (citizenSession && activePhone) {
+        const otpEl = document.getElementById('otpAuthLabel');
+        if (otpEl) otpEl.innerText = `+91 ${activePhone.slice(-4)} (Verified)`;
+      }
+
+      // Update Select Dropdown Options
+      Object.keys(SELECT_OPTIONS_TRANSLATIONS).forEach(selectId => {
+        const sel = document.getElementById(selectId);
+        if (sel) {
+          const optMap = SELECT_OPTIONS_TRANSLATIONS[selectId];
+          Array.from(sel.options).forEach(opt => {
+            if (optMap[opt.value] && optMap[opt.value][lang]) {
+              opt.text = optMap[opt.value][lang];
+            }
+          });
+        }
+      });
+
+      // Re-render active scheme cards if results exist
+      if (currentMatchResults) {
+        renderResults(currentMatchResults);
       }
     }
 
@@ -936,6 +1313,21 @@
       document.getElementById('ration_card').value = p.ration_card;
       document.getElementById('landholding_acres').value = p.landholding_acres;
 
+      // Reset and hide custom "Other" containers
+      ['state', 'gender', 'category', 'occupation', 'education'].forEach(type => {
+        const otherEl = document.getElementById(type === 'education' ? 'education_other' : `${type}_other`);
+        const contEl = document.getElementById(type === 'education' ? 'education_other_container' : `${type}_other_container`);
+        if (otherEl) otherEl.value = '';
+        if (contEl) contEl.classList.add('hidden');
+      });
+
+      const docOtherToggle = document.getElementById('doc_other_toggle');
+      if (docOtherToggle) docOtherToggle.checked = false;
+      const otherDocsCont = document.getElementById('other_docs_container');
+      if (otherDocsCont) otherDocsCont.classList.add('hidden');
+      const docOtherCustom = document.getElementById('doc_other_custom');
+      if (docOtherCustom) docOtherCustom.value = '';
+
       // Reset checkboxes
       document.getElementById('doc_aadhaar').checked = p.existing_documents.includes('aadhaar_card');
       document.getElementById('doc_bank').checked = p.existing_documents.includes('bank_passbook');
@@ -973,14 +1365,57 @@
       if (document.getElementById('doc_domicile').checked) existing_docs.push('domicile_certificate');
       if (document.getElementById('doc_bonafide').checked) existing_docs.push('bonafide_admission_proof');
 
+      // Append custom documents if specified in the "Others" section
+      const docOtherToggle = document.getElementById('doc_other_toggle');
+      if (docOtherToggle && docOtherToggle.checked) {
+        const customDocsVal = (document.getElementById('doc_other_custom').value || '').trim();
+        if (customDocsVal) {
+          const docTokens = customDocsVal.split(',').map(d => d.trim().toLowerCase().replace(/[\s-]+/g, '_')).filter(Boolean);
+          docTokens.forEach(dt => {
+            if (!existing_docs.includes(dt)) existing_docs.push(dt);
+          });
+        }
+      }
+
+      // Check for "other" selections and resolve values
+      let stateVal = document.getElementById('state').value;
+      if (stateVal === 'other') {
+        const customState = (document.getElementById('state_other').value || '').trim();
+        if (customState) stateVal = customState;
+      }
+
+      let genderVal = document.getElementById('gender').value;
+      if (genderVal === 'other') {
+        const customGender = (document.getElementById('gender_other').value || '').trim();
+        if (customGender) genderVal = customGender;
+      }
+
+      let categoryVal = document.getElementById('category').value;
+      if (categoryVal === 'other') {
+        const customCat = (document.getElementById('category_other').value || '').trim();
+        if (customCat) categoryVal = customCat.toLowerCase();
+      }
+
+      let occupationVal = document.getElementById('occupation').value;
+      if (occupationVal === 'other') {
+        const customOcc = (document.getElementById('occupation_other').value || '').trim();
+        if (customOcc) occupationVal = customOcc.toLowerCase().replace(/[\s-]+/g, '_');
+      }
+
+      let educationVal = document.getElementById('education_level').value;
+      if (educationVal === 'other') {
+        const customEdu = (document.getElementById('education_other').value || '').trim();
+        if (customEdu) educationVal = customEdu.toLowerCase().replace(/[\s-]+/g, '_');
+      }
+
       const payload = {
         name: document.getElementById('name').value,
         age: parseInt(document.getElementById('age').value),
-        state: document.getElementById('state').value,
-        gender: document.getElementById('gender').value,
-        category: document.getElementById('category').value,
-        occupation: document.getElementById('occupation').value,
-        education_level: document.getElementById('education_level').value,
+        state: stateVal,
+        gender: genderVal,
+        category: categoryVal,
+        occupation: occupationVal,
+        education_level: educationVal,
         annual_family_income: parseInt(document.getElementById('annual_income').value),
         ration_card: document.getElementById('ration_card').value,
         landholding_acres: parseFloat(document.getElementById('landholding_acres').value),
@@ -1001,8 +1436,72 @@
       }
     }
 
+    const CARD_TEXTS = {
+      en: {
+        unlocked: "Schemes Unlocked for",
+        ready: "Ready to Apply (100%)",
+        pending: "Documents Pending",
+        action: "Action Required",
+        missingHeader: "Missing Documents (Click for Procurement Guide):",
+        benefitLabel: "Benefit:",
+        predicatesLabel: "Transparent Eligibility Predicates (Why You Qualify):",
+        applyBtn: "Apply on Official Portal",
+        auditedBy: "Audited by:",
+        verified: "Verified:"
+      },
+      hi: {
+        unlocked: "पात्र योजनाएं खोजी गईं -",
+        ready: "आवेदन के लिए तैयार (100%)",
+        pending: "दस्तावेज़ लंबित",
+        action: "कार्यवाही आवश्यक",
+        missingHeader: "लंबित दस्तावेज़ (प्रक्रिया देखने के लिए क्लिक करें):",
+        benefitLabel: "लाभ:",
+        predicatesLabel: "पारदर्शी पात्रता कारण (आप क्यों पात्र हैं):",
+        applyBtn: "आधिकारिक पोर्टल पर आवेदन करें",
+        auditedBy: "सत्यापित स्रोत:",
+        verified: "सत्यापित:"
+      },
+      bn: {
+        unlocked: "আনলক হওয়া প্রকল্প -",
+        ready: "আবেদনের জন্য প্রস্তুত (১০০%)",
+        pending: "নথিপত্র বাকি",
+        action: "পদক্ষেপ প্রয়োজন",
+        missingHeader: "অনুপস্থিত নথিপত্র (নির্দেশিকা দেখতে ক্লিক করুন):",
+        benefitLabel: "সুবিধা:",
+        predicatesLabel: "স্বচ্ছ যোগ্যতার কারণ (আপনি কেন যোগ্য):",
+        applyBtn: "অফিসিয়াল পোর্টালে আবেদন করুন",
+        auditedBy: "যাচাইকারী:",
+        verified: "যাচাইকৃত:"
+      },
+      mr: {
+        unlocked: "पात्र ठरलेल्या योजना -",
+        ready: "अर्जासाठी सज्ज (१००%)",
+        pending: "कागदपत्रे बाकी",
+        action: "कृती आवश्यक",
+        missingHeader: "अपूर्ण कागदपत्रे (मार्गदर्शनासाठी क्लिक करा):",
+        benefitLabel: "फायदा:",
+        predicatesLabel: "पारदर्शक पात्रता निकष (तुम्ही का पात्र आहात):",
+        applyBtn: "अधिकृत पोर्टलवर अर्ज करा",
+        auditedBy: "पडताळणी:",
+        verified: "पडताळणी:"
+      },
+      te: {
+        unlocked: "లభ్యమైన పథకాలు -",
+        ready: "దరఖాస్తుకు సిద్ధంగా ఉంది (100%)",
+        pending: "పత్రాలు పెండింగ్‌లో ఉన్నాయి",
+        action: "చర్య అవసరం",
+        missingHeader: "తప్పిపోయిన పత్రాలు (గైడ్ కోసం క్లిక్ చేయండి):",
+        benefitLabel: "ప్రయోజనం:",
+        predicatesLabel: "పారదర్శక అర్హత కారణాలు (మీరు ఎందుకు అర్హులు):",
+        applyBtn: "అధికారిక పోర్టల్‌లో దరఖాస్తు చేయండి",
+        auditedBy: "ధృవీకరించినవారు:",
+        verified: "ధృవీకరించబడింది:"
+      }
+    };
+
     function renderResults(data) {
-      document.getElementById('statHeader').innerText = `${data.matched_count} Schemes Unlocked for ${data.citizen.name}`;
+      const ct = CARD_TEXTS[currentSelectedLang] || CARD_TEXTS.en;
+      document.getElementById('statHeader').innerText = `${data.matched_count} ${ct.unlocked} ${data.citizen.name}`;
       document.getElementById('tabCount').innerText = data.matched_count;
       document.getElementById('whatsappCardText').innerText = data.whatsapp_card;
       document.getElementById('hindiExplanationText').innerText = data.hindi_explanation;
@@ -1023,13 +1522,13 @@
       data.matches.forEach(m => {
         const s = m.scheme;
         let badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
-        let badgeText = "🟢 Ready to Apply (100%)";
+        let badgeText = `🟢 ${ct.ready}`;
         if (m.readiness_score < 100 && m.readiness_score >= 50) {
           badgeColor = "bg-amber-50 text-amber-700 border-amber-200";
-          badgeText = `🟡 Documents Pending (${m.readiness_score}%)`;
+          badgeText = `🟡 ${ct.pending} (${m.readiness_score}%)`;
         } else if (m.readiness_score < 50) {
           badgeColor = "bg-rose-50 text-rose-700 border-rose-200";
-          badgeText = `🔴 Action Required (${m.readiness_score}%)`;
+          badgeText = `🔴 ${ct.action} (${m.readiness_score}%)`;
         }
 
         // Missing docs chips
@@ -1037,7 +1536,7 @@
         if (m.documents_missing && m.documents_missing.length > 0) {
           missingChipsHtml = `
             <div class="mt-3 pt-3 border-t border-slate-100">
-              <span class="text-xs font-bold text-slate-500 block mb-1.5">Missing Documents (Click for Procurement Guide):</span>
+              <span class="text-xs font-bold text-slate-500 block mb-1.5">${ct.missingHeader}</span>
               <div class="flex flex-wrap gap-1.5">
                 ${m.documents_missing.map(docId => {
                   return `<button onclick="openDocGuide('${docId}')" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 flex items-center space-x-1 transition">
@@ -1050,6 +1549,8 @@
           `;
         }
 
+        const displayName = (currentSelectedLang === 'hi' && s.hindi_name) ? `${s.name} (${s.hindi_name})` : s.name;
+
         const card = document.createElement('div');
         card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition";
         card.innerHTML = `
@@ -1059,11 +1560,11 @@
                 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">${s.category_tag}</span>
                 <span class="text-xs text-slate-400 font-medium">${s.level} Scheme</span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200" title="Audited Rule Version">
-                  🛡️ Verified: ${s.last_verified_date || 'Nov 2026'}
+                  🛡️ ${ct.verified} ${s.last_verified_date || 'Nov 2026'}
                 </span>
               </div>
-              <h4 class="text-base font-bold text-slate-900 mt-1">${s.name}</h4>
-              <p class="text-xs text-slate-500 font-medium italic">${s.hindi_name || ''}</p>
+              <h4 class="text-base font-bold text-slate-900 mt-1">${displayName}</h4>
+              <p class="text-xs text-slate-500 font-medium italic">${s.hindi_name && currentSelectedLang !== 'hi' ? s.hindi_name : ''}</p>
             </div>
             <span class="px-2.5 py-1 rounded-lg text-xs font-bold border ${badgeColor} whitespace-nowrap">
               ${badgeText}
@@ -1071,14 +1572,14 @@
           </div>
 
           <p class="text-xs text-slate-700 my-2.5 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-            <strong>🎁 Benefit:</strong> ${s.benefit_summary}
+            <strong>🎁 ${ct.benefitLabel}</strong> ${s.benefit_summary}
           </p>
 
           <!-- Transparent Eligibility Predicates -->
           <div class="text-xs text-slate-600 space-y-1 mb-2 bg-emerald-50/40 p-2.5 rounded-lg border border-emerald-100">
             <span class="font-bold text-emerald-900 block flex items-center space-x-1">
               <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
-              <span>Transparent Eligibility Predicates (Why You Qualify):</span>
+              <span>${ct.predicatesLabel}</span>
             </span>
             ${m.eligibility_reasons.slice(0, 4).map(r => `<div class="flex items-center space-x-1.5 text-slate-700"><span class="text-emerald-600 font-bold">✓</span><span>${r}</span></div>`).join('')}
           </div>
@@ -1086,9 +1587,9 @@
           ${missingChipsHtml}
 
           <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2">
-            <span class="text-[11px] text-slate-400">Audited by: <strong>${s.verified_by || 'Ministry Public Notice'}</strong></span>
+            <span class="text-[11px] text-slate-400">${ct.auditedBy} <strong>${s.verified_by || 'Ministry Public Notice'}</strong></span>
             <a href="${s.official_url}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1 transition shadow-sm">
-              <span>Apply on Official Portal</span>
+              <span>${ct.applyBtn}</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
