@@ -1,0 +1,2 @@
+# Sahayak zero-dependency standard library backend
+# All core logic uses Python standard library (json, dataclasses, http.server, re, urllib)
