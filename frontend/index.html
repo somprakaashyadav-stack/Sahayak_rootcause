@@ -43,11 +43,11 @@
       </div>
 
       <!-- Quick Action Badges -->
-      <div class="hidden md:flex items-center space-x-4 text-xs font-medium text-slate-600">
-        <button onclick="promptBackendUrl()" class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80 hover:bg-slate-200 transition">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span id="apiHostLabel">Backend: Auto</span>
-        </button>
+      <div class="hidden md:flex items-center space-x-3 text-xs font-medium text-slate-600">
+        <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80">
+          <span id="backendStatusDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span id="backendStatusText" class="text-[11px] text-slate-600 font-semibold">Render API: Connected</span>
+        </div>
         <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80">
           <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
           <span>100% Explainable Rules</span>
@@ -393,31 +393,14 @@
 
   <!-- Application Logic -->
   <script>
+    // Point dynamically to Render backend when deployed on Vercel or other domains
+    const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '8000'
+      ? ''
+      : 'https://sahayak-backend-3xjp.onrender.com';
+
     // Cached Document Catalog for Modal resolution
     let docsCatalog = {};
     let currentMatchResults = null;
-
-    function getApiBaseUrl() {
-      const custom = localStorage.getItem('sahayak_backend_url');
-      if (custom) return custom.replace(/\/+$/, '');
-      return '';
-    }
-
-    function promptBackendUrl() {
-      const current = localStorage.getItem('sahayak_backend_url') || '';
-      const input = prompt("Enter your Render Backend URL (e.g. https://sahayak-backend.onrender.com) or leave blank for automatic relative proxy:", current);
-      if (input !== null) {
-        if (input.trim()) {
-          localStorage.setItem('sahayak_backend_url', input.trim());
-          document.getElementById('apiHostLabel').innerText = "Backend: Custom";
-        } else {
-          localStorage.removeItem('sahayak_backend_url');
-          document.getElementById('apiHostLabel').innerText = "Backend: Auto";
-        }
-        loadDocumentsCatalog();
-        matchSchemes();
-      }
-    }
 
     const PERSONA_DATA = {
       sunita: {
@@ -523,7 +506,7 @@
       };
 
       try {
-        const res = await fetch(getApiBaseUrl() + '/api/match', {
+        const res = await fetch(`${API_BASE}/api/match`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
@@ -627,9 +610,26 @@
       lucide.createIcons();
     }
 
+    async function checkBackendHealth() {
+      try {
+        const res = await fetch(`${API_BASE}/api/health`);
+        if (res.ok) {
+          const dot = document.getElementById('backendStatusDot');
+          const txt = document.getElementById('backendStatusText');
+          if (dot) dot.className = "w-2 h-2 rounded-full bg-emerald-500";
+          if (txt) txt.innerText = "Render API: Connected";
+        }
+      } catch (e) {
+        const dot = document.getElementById('backendStatusDot');
+        const txt = document.getElementById('backendStatusText');
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-amber-500 animate-ping";
+        if (txt) txt.innerText = "Waking up Render (free tier)...";
+      }
+    }
+
     async function loadDocumentsCatalog() {
       try {
-        const res = await fetch(getApiBaseUrl() + '/api/documents');
+        const res = await fetch(`${API_BASE}/api/documents`);
         const data = await res.json();
         data.documents.forEach(d => {
           docsCatalog[d.doc_id] = d;
@@ -703,10 +703,7 @@
     // Initialize on window load
     window.addEventListener('DOMContentLoaded', async () => {
       lucide.createIcons();
-      if (localStorage.getItem('sahayak_backend_url')) {
-        const el = document.getElementById('apiHostLabel');
-        if (el) el.innerText = "Backend: Custom";
-      }
+      checkBackendHealth();
       await loadDocumentsCatalog();
       await matchSchemes();
     });

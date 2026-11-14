@@ -1,3 +1,0 @@
-# Sahayak Backend Dependencies
-# Note: Sahayak is designed to run with Python standard library, but packages below ensure production hosting compatibility.
-gunicorn>=21.2.0

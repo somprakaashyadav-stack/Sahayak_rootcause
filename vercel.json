@@ -1,9 +1,14 @@
 {
+  "version": 2,
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://sahayak-backend.onrender.com/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://sahayak-backend-3xjp.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
     }
   ]
 }

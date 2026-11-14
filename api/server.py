@@ -5,7 +5,6 @@ Serves the REST API endpoints and hosts the modern web dashboard.
 """
 
 import sys
-import os
 import json
 import mimetypes
 from pathlib import Path
@@ -78,13 +77,9 @@ class SahayakHandler(BaseHTTPRequestHandler):
         # 4. Static Frontend: Serve index.html or assets
         if path == "/" or path == "/index.html":
             file_path = BASE_DIR / "frontend" / "index.html"
-            if not file_path.is_file():
-                file_path = BASE_DIR / "index.html"
         else:
             relative_path = path.lstrip("/")
             file_path = BASE_DIR / "frontend" / relative_path
-            if not file_path.is_file():
-                file_path = BASE_DIR / relative_path
 
         if file_path.is_file():
             mime_type, _ = mimetypes.guess_type(str(file_path))
@@ -173,14 +168,14 @@ def asdict_prereq(p):
     }
 
 
-def run_server(host: str = "0.0.0.0", port: int = 8000):
-    server_address = (host, port)
+def run_server(port: int = 8000):
+    server_address = ("", port)
     httpd = HTTPServer(server_address, SahayakHandler)
-    print(f"🚀 Sahayak Web & API Server running at http://{host}:{port}")
-    print(f"   - Web UI: http://{host}:{port}/")
-    print(f"   - Match API: POST http://{host}:{port}/api/match")
-    print(f"   - Schemes API: GET http://{host}:{port}/api/schemes")
-    print(f"   - Documents API: GET http://{host}:{port}/api/documents")
+    print(f"🚀 Sahayak Web & API Server running at http://localhost:{port}")
+    print(f"   - Web UI: http://localhost:{port}/")
+    print(f"   - Match API: POST http://localhost:{port}/api/match")
+    print(f"   - Schemes API: GET http://localhost:{port}/api/schemes")
+    print(f"   - Documents API: GET http://localhost:{port}/api/documents")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
@@ -189,6 +184,5 @@ def run_server(host: str = "0.0.0.0", port: int = 8000):
 
 
 if __name__ == "__main__":
-    port_env = os.environ.get("PORT")
-    port = int(port_env) if port_env else (int(sys.argv[1]) if len(sys.argv) > 1 else 8000)
-    run_server("0.0.0.0", port)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+    run_server(port)
