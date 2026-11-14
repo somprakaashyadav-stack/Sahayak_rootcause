@@ -1,0 +1,164 @@
+[
+  {
+    "doc_id": "aadhaar_card",
+    "doc_name": "Aadhaar Card (आधार कार्ड)",
+    "issuing_authority": "UIDAI (Unique Identification Authority of India)",
+    "official_portal_url": "https://myaadhaar.uidai.gov.in/",
+    "required_proofs": ["Proof of Identity (POI)", "Proof of Address (POA)", "Biometrics"],
+    "processing_time_days": 15,
+    "estimated_cost_inr": 50,
+    "step_by_step_process": [
+      "Book an appointment at nearest Aadhaar Seva Kendra or Post Office",
+      "Take demographic documents (Birth Certificate, Voter ID, or School Leaving Cert)",
+      "Give biometrics (fingerprints, iris, and photo)",
+      "Track enrolment using EID slip online on myaadhaar.uidai.gov.in"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "income_certificate",
+    "doc_name": "Income Certificate (आय प्रमाण पत्र)",
+    "issuing_authority": "Revenue Department (Tehsildar / Sub-Divisional Magistrate)",
+    "official_portal_url": "https://edistrict.up.gov.in/",
+    "required_proofs": ["Aadhaar Card", "Self-declaration affidavit", "Ration Card or Salary Slip / Gram Pradhan verification", "Passport Photo"],
+    "processing_time_days": 15,
+    "estimated_cost_inr": 30,
+    "step_by_step_process": [
+      "Register on state e-District portal (e.g. edistrict.up.gov.in) or visit Jan Seva Kendra (CSC)",
+      "Fill online application form and select Revenue Services > Income Certificate",
+      "Upload scanned copies of Aadhaar, self-declaration, and photo",
+      "Pay ₹15-₹30 application fee",
+      "Lekhpal/Patwari conducts local inquiry within 7 days",
+      "Download digitally signed certificate from portal or collect from CSC"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "caste_certificate",
+    "doc_name": "Caste Certificate (जाति प्रमाण पत्र - SC/ST/OBC)",
+    "issuing_authority": "Tehsildar / District Magistrate",
+    "official_portal_url": "https://edistrict.up.gov.in/",
+    "required_proofs": ["Aadhaar Card", "Ration Card", "Self-declaration of caste", "Father/Relative's older caste certificate or 1950 family proof"],
+    "processing_time_days": 15,
+    "estimated_cost_inr": 30,
+    "step_by_step_process": [
+      "Visit state e-District portal or local CSC center",
+      "Submit applicant details along with father's caste record",
+      "Patwari/Lekhpal verifies community lineage in village record",
+      "Tehsildar approves and signs digital certificate"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "domicile_certificate",
+    "doc_name": "Domicile / Residence Certificate (निवास प्रमाण पत्र)",
+    "issuing_authority": "Revenue Department / Sub-Divisional Magistrate (SDM)",
+    "official_portal_url": "https://edistrict.up.gov.in/",
+    "required_proofs": ["Aadhaar Card", "Electricity Bill / Ration Card", "School Transfer Certificate / Marksheet", "Self-Declaration"],
+    "processing_time_days": 10,
+    "estimated_cost_inr": 30,
+    "step_by_step_process": [
+      "Apply via e-District portal under 'Niwas Praman Patra'",
+      "Upload proof of residence showing stay in state for > 3-5 years",
+      "Patwari reports confirmation",
+      "Download digitally signed certificate"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "bank_passbook",
+    "doc_name": "Bank Account Passbook (Aadhaar & NPCI Linked)",
+    "issuing_authority": "Any Nationalized / Scheduled Commercial Bank / India Post Payments Bank",
+    "official_portal_url": "https://pmjdy.gov.in/",
+    "required_proofs": ["Aadhaar Card", "PAN Card or Form 60", "2 Passport Photos"],
+    "processing_time_days": 2,
+    "estimated_cost_inr": 0,
+    "step_by_step_process": [
+      "Visit nearest bank branch or IPPB postman with Aadhaar and photos",
+      "Open Zero-balance PM Jan Dhan Yojana account if low income",
+      "Request Direct Benefit Transfer (DBT) / NPCI Aadhaar seeding form",
+      "Verify NPCI mapping via *99*99*1# or UIDAI portal"
+    ],
+    "online_available": false
+  },
+  {
+    "doc_id": "bonafide_admission_proof",
+    "doc_name": "Bonafide Certificate & Fee Receipt (प्रवेश व फीस रसीद)",
+    "issuing_authority": "Principal / Registrar of Enrolled Educational Institution",
+    "official_portal_url": "https://scholarship.up.gov.in/",
+    "required_proofs": ["College Allotment Letter", "Fee Receipt", "Previous Year Marksheet"],
+    "processing_time_days": 3,
+    "estimated_cost_inr": 0,
+    "step_by_step_process": [
+      "Contact college administration / scholarship desk",
+      "Obtain Bonafide Certificate stating course, year, and non-refundable fee structure",
+      "Ensure College AISHE / Affiliation code is active on UP Scholarship portal"
+    ],
+    "online_available": false
+  },
+  {
+    "doc_id": "ration_card",
+    "doc_name": "Ration Card (राशन कार्ड - BPL/NFSA/Antyodaya)",
+    "issuing_authority": "Food and Civil Supplies Department",
+    "official_portal_url": "https://fcs.up.gov.in/",
+    "required_proofs": ["Family Head Aadhaar", "All Family Members' Aadhaar", "Income Certificate", "LPG Gas Connection Consumer No."],
+    "processing_time_days": 30,
+    "estimated_cost_inr": 50,
+    "step_by_step_process": [
+      "Fill online family unit form on FCS portal or submit at Supply Inspector office",
+      "Provide bank account details of female head of family",
+      "Field verification by Supply Inspector / Village Gram Panchayat",
+      "Ration card number generated and added to NFSA portal"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "bocw_labor_card",
+    "doc_name": "UP BOCW Shramik Card (भवन एवं सन्निर्माण कर्मकार कार्ड)",
+    "issuing_authority": "UP Building & Other Construction Workers Welfare Board",
+    "official_portal_url": "https://upbocw.in/",
+    "required_proofs": ["Aadhaar Card", "Bank Account Passbook", "90-day construction work certificate from contractor or Gram Pradhan", "Photo"],
+    "processing_time_days": 15,
+    "estimated_cost_inr": 40,
+    "step_by_step_process": [
+      "Apply online on upbocw.in or visit CSC / Labour Office",
+      "Upload 90 days work self-attestation",
+      "Pay nominal registration fee ₹20 and yearly contribution ₹20",
+      "Labour Enforcement Officer (LEO) verifies",
+      "Download Shramik Registration Certificate"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "land_khatauni",
+    "doc_name": "Land Revenue Record / Khatauni (भूलेख खतौनी / खसरा)",
+    "issuing_authority": "Revenue Board (UP Bhulekh)",
+    "official_portal_url": "https://upbhulekh.gov.in/",
+    "required_proofs": ["Gata / Khasra number or Land Owner Name", "Village & Tehsil Details"],
+    "processing_time_days": 1,
+    "estimated_cost_inr": 15,
+    "step_by_step_process": [
+      "Go to upbhulekh.gov.in",
+      "Select District, Tehsil, and Village",
+      "Enter Gata number or account holder name",
+      "View or download authenticated RoR (Khatauni copy)"
+    ],
+    "online_available": true
+  },
+  {
+    "doc_id": "udid_disability_card",
+    "doc_name": "Unique Disability ID / UDID Card (दिव्यांग प्रमाण पत्र)",
+    "issuing_authority": "Department of Empowerment of Persons with Disabilities",
+    "official_portal_url": "https://www.swavlambanstatus.info/",
+    "required_proofs": ["Aadhaar Card", "Medical Assessment by District Hospital Medical Board", "Disability Photo"],
+    "processing_time_days": 30,
+    "estimated_cost_inr": 0,
+    "step_by_step_process": [
+      "Apply online on swavlambancard.gov.in",
+      "Book slot with CMO / District Medical Board for physical evaluation",
+      "Medical board certifies disability percentage (> 40% for welfare eligibility)",
+      "UDID card issued with national disability registry number"
+    ],
+    "online_available": true
+  }
+]
