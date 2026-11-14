@@ -78,9 +78,13 @@ class SahayakHandler(BaseHTTPRequestHandler):
         # 4. Static Frontend: Serve index.html or assets
         if path == "/" or path == "/index.html":
             file_path = BASE_DIR / "frontend" / "index.html"
+            if not file_path.is_file():
+                file_path = BASE_DIR / "index.html"
         else:
             relative_path = path.lstrip("/")
             file_path = BASE_DIR / "frontend" / relative_path
+            if not file_path.is_file():
+                file_path = BASE_DIR / relative_path
 
         if file_path.is_file():
             mime_type, _ = mimetypes.guess_type(str(file_path))

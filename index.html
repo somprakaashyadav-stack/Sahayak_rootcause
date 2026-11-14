@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahayak (सहायक) - Citizen Welfare Copilot</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+    }
+    .tricolor-stripe {
+      background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+      height: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Tricolor Accent -->
+  <div class="tricolor-stripe"></div>
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-orange-500/20">
+          स
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-xl font-bold tracking-tight text-slate-900">Sahayak <span class="text-orange-600 font-semibold text-base">(सहायक)</span></h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Copilot MVP
+            </span>
+          </div>
+          <p class="text-xs text-slate-500">Personalized Scheme Discovery & Application-Readiness Plan</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="hidden md:flex items-center space-x-4 text-xs font-medium text-slate-600">
+        <button onclick="promptBackendUrl()" class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80 hover:bg-slate-200 transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="apiHostLabel">Backend: Auto</span>
+        </button>
+        <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          <span>100% Explainable Rules</span>
+        </div>
+        <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80">
+          <i data-lucide="message-square" class="w-4 h-4 text-green-600"></i>
+          <span>WhatsApp-Ready</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Hero / Value Prop Banner -->
+    <div class="mb-8 bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold mb-3 tracking-wide uppercase">
+          Application-Readiness Platform
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+          Don't just search government schemes. Get an instant, step-by-step action plan to apply.
+        </h2>
+        <p class="text-orange-100 text-sm sm:text-base leading-relaxed">
+          Sahayak eliminates the "last-mile dropout" by pairing transparent eligibility matching with automated document cascade resolution and WhatsApp sharing for rural and first-time users.
+        </p>
+      </div>
+      <!-- Decorative background watermark -->
+      <div class="absolute -right-8 -bottom-10 text-white/10 select-none pointer-events-none font-black text-9xl">
+        योजना
+      </div>
+    </div>
+
+    <!-- Presets bar -->
+    <div class="mb-6 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center space-x-1">
+          <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+          <span>Quick Load Demo Personas:</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="loadPersona('sunita')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100 transition">
+            🎓 Sunita (21, UP Student)
+          </button>
+          <button onclick="loadPersona('ramesh')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition">
+            🌾 Ramesh (42, Farmer)
+          </button>
+          <button onclick="loadPersona('munni')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition">
+            🏗️ Munni Devi (35, BOCW Laborer)
+          </button>
+          <button onclick="loadPersona('mohan')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 transition">
+            🛒 Mohan (28, Street Vendor)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT: Profile Questionnaire (5 cols) -->
+      <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+        <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+          <div>
+            <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+              <i data-lucide="clipboard-list" class="w-5 h-5 text-orange-600"></i>
+              <span>Citizen Profile (नागरिक विवरण)</span>
+            </h3>
+            <p class="text-xs text-slate-500">8 Simple questions to determine eligibility</p>
+          </div>
+          <span class="text-xs font-semibold text-slate-400">Step 1 of 2</span>
+        </div>
+
+        <form id="profileForm" onsubmit="event.preventDefault(); matchSchemes();" class="space-y-4 text-xs sm:text-sm">
+          
+          <!-- Name & Age -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="col-span-2">
+              <label class="block font-semibold text-slate-700 mb-1">Citizen Name (नाम)</label>
+              <input type="text" id="name" value="Sunita Yadav" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Age (उम्र)</label>
+              <input type="number" id="age" value="21" required min="1" max="100" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+            </div>
+          </div>
+
+          <!-- State & District -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">State (राज्य)</label>
+              <select id="state" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="Uttar Pradesh" selected>Uttar Pradesh (उत्तर प्रदेश)</option>
+                <option value="Madhya Pradesh">Madhya Pradesh (मध्य प्रदेश)</option>
+                <option value="Bihar">Bihar (बिहार)</option>
+                <option value="Rajasthan">Rajasthan (राजस्थान)</option>
+                <option value="Delhi">Delhi (दिल्ली)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Gender (लिंग)</label>
+              <select id="gender" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="female" selected>Female (महिला)</option>
+                <option value="male">Male (पुरुष)</option>
+                <option value="transgender">Transgender (अन्य)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Social Category & Occupation -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Social Category (वर्ग)</label>
+              <select id="category" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="obc" selected>OBC (अन्य पिछड़ा वर्ग)</option>
+                <option value="sc">SC (अनुसूचित जाति)</option>
+                <option value="st">ST (अनुसूचित जनजाति)</option>
+                <option value="general">General (सामान्य)</option>
+                <option value="ews">EWS (आर्थिक रूप से कमजोर)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Occupation (पेशा)</label>
+              <select id="occupation" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="student" selected>Student (विद्यार्थी)</option>
+                <option value="farmer">Farmer (किसान)</option>
+                <option value="daily_wage_laborer">Daily-Wage Laborer (श्रमिक)</option>
+                <option value="street_vendor">Street Vendor (रेहड़ी पटरी)</option>
+                <option value="self_employed">Self Employed / Artisan</option>
+                <option value="unemployed">Unemployed (बेरोजगार)</option>
+                <option value="retired">Senior / Retired (वृद्ध)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Education & Family Income -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Education (शिक्षा)</label>
+              <select id="education_level" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="none">No Formal Schooling</option>
+                <option value="secondary">Class 10th Pass</option>
+                <option value="higher_secondary">Class 12th Pass</option>
+                <option value="undergraduate" selected>Undergraduate (Degree)</option>
+                <option value="postgraduate">Postgraduate</option>
+                <option value="diploma">Diploma / ITI</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Annual Income (₹ आय)</label>
+              <input type="number" id="annual_income" value="150000" step="10000" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+            </div>
+          </div>
+
+          <!-- Special Status & Ration Card -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Ration Card (राशन कार्ड)</label>
+              <select id="ration_card" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                <option value="apl" selected>White / APL Card</option>
+                <option value="bpl">BPL / NFSA (Yellow/Pink)</option>
+                <option value="aay">Antyodaya (AAY - Red)</option>
+                <option value="none">No Ration Card</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Land (Acres भूमि)</label>
+              <input type="number" id="landholding_acres" value="0.0" step="0.5" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+            </div>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="pt-2 border-t border-slate-100 space-y-2">
+            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Documents Already in Hand:</span>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_aadhaar" checked class="rounded text-orange-600 focus:ring-orange-500">
+                <span>Aadhaar Card</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_bank" checked class="rounded text-orange-600 focus:ring-orange-500">
+                <span>Bank Passbook (NPCI)</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_income" class="rounded text-orange-600 focus:ring-orange-500">
+                <span>Income Certificate</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_caste" class="rounded text-orange-600 focus:ring-orange-500">
+                <span>Caste Certificate</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_domicile" class="rounded text-orange-600 focus:ring-orange-500">
+                <span>Domicile Certificate</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" id="doc_bonafide" checked class="rounded text-orange-600 focus:ring-orange-500">
+                <span>College Bonafide/Fee</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-3">
+            <button type="submit" class="w-full py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold flex items-center justify-center space-x-2 shadow-lg shadow-orange-600/30 transition transform active:scale-98">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+              <span>Generate Application Plan (योजना खोजें)</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: Results & Readiness Plan (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Results Header Stats -->
+        <div id="resultsBanner" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Evaluation Summary</span>
+            <h3 id="statHeader" class="text-lg font-extrabold text-slate-900">4 Schemes Unlocked for Sunita</h3>
+            <p id="statSub" class="text-xs text-slate-500 mt-0.5">Matched from 15 curated UP & Central schemes using transparent rules</p>
+          </div>
+          <div class="text-right">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              100% Rule-Verified
+            </span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs: Schemes vs WhatsApp Card vs Hindi Plain Language -->
+        <div class="flex border-b border-slate-200 space-x-4 text-xs font-bold">
+          <button id="tabSchemesBtn" onclick="switchTab('schemes')" class="pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Matched Schemes (<span id="tabCount">4</span>)</span>
+          </button>
+          <button id="tabWhatsappBtn" onclick="switchTab('whatsapp')" class="pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>WhatsApp Action Card</span>
+          </button>
+          <button id="tabHindiBtn" onclick="switchTab('hindi')" class="pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            <span>सरल हिंदी विवरण (Plain Hindi)</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: Scheme Cards Container -->
+        <div id="tabSchemes" class="space-y-4">
+          <!-- Dynamic Scheme Cards will render here -->
+        </div>
+
+        <!-- TAB 2: WhatsApp Card View -->
+        <div id="tabWhatsapp" class="hidden bg-emerald-50/50 rounded-2xl border border-emerald-200 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2 text-emerald-800">
+              <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+              <h4 class="font-bold text-sm">WhatsApp Shareable Card</h4>
+            </div>
+            <button onclick="copyWhatsappText()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-sm transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copyBtnLabel">Copy Message</span>
+            </button>
+          </div>
+          <div class="bg-white rounded-xl border border-emerald-200/80 p-4 text-xs font-mono whitespace-pre-wrap text-slate-700 leading-relaxed shadow-inner" id="whatsappCardText">
+            <!-- Formatted WhatsApp message appears here -->
+          </div>
+        </div>
+
+        <!-- TAB 3: Plain Hindi Explanation -->
+        <div id="tabHindi" class="hidden bg-amber-50/50 rounded-2xl border border-amber-200 p-6 shadow-sm">
+          <div class="flex items-center space-x-2 text-amber-900 mb-3 font-bold text-sm">
+            <i data-lucide="sparkles" class="w-5 h-5 text-amber-600"></i>
+            <span>नागरिक मित्र व्याख्या (AI Assistant Layer)</span>
+          </div>
+          <div class="bg-white rounded-xl border border-amber-200/80 p-5 text-xs text-slate-700 leading-relaxed whitespace-pre-line" id="hindiExplanationText">
+            <!-- Plain Hindi Explanation renders here -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Document Procurement Cascade Modal -->
+  <div id="docModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 relative">
+      <button onclick="closeDocModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-orange-600 uppercase tracking-wider">Document Procurement Guide</span>
+          <h3 id="modalDocName" class="text-base font-bold text-slate-900">Income Certificate</h3>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600 mb-6">
+        <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+          <span>🏛️ Issuing Authority:</span>
+          <span id="modalAuthority" class="font-bold text-slate-800">Tehsildar / e-District</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+          <span>⏱️ Expected Processing Time:</span>
+          <span id="modalTime" class="font-bold text-slate-800">15 Days</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+          <span>💰 Official Government Fee:</span>
+          <span id="modalFee" class="font-bold text-slate-800">₹30</span>
+        </div>
+
+        <div>
+          <span class="font-bold text-slate-800 block mb-1">📋 Required Proofs:</span>
+          <ul id="modalProofs" class="list-disc list-inside space-y-1 text-slate-600 pl-1"></ul>
+        </div>
+
+        <div>
+          <span class="font-bold text-slate-800 block mb-1">👣 How to Apply (Step-by-Step):</span>
+          <ol id="modalSteps" class="list-decimal list-inside space-y-1.5 text-slate-700 pl-1"></ol>
+        </div>
+      </div>
+
+      <div class="flex space-x-3">
+        <a id="modalPortalLink" href="#" target="_blank" class="flex-1 py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs text-center shadow-md transition">
+          Open Official Portal &rarr;
+        </a>
+        <button onclick="closeDocModal()" class="py-2.5 px-4 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <p>Sahayak Welfare Copilot &bull; Built for Citizen Empowerment &amp; Last-Mile Delivery</p>
+    <p class="mt-1">Powered by Explainable Rules Matching + State Document Procurement Cascades</p>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // Cached Document Catalog for Modal resolution
+    let docsCatalog = {};
+    let currentMatchResults = null;
+
+    function getApiBaseUrl() {
+      const custom = localStorage.getItem('sahayak_backend_url');
+      if (custom) return custom.replace(/\/+$/, '');
+      return '';
+    }
+
+    function promptBackendUrl() {
+      const current = localStorage.getItem('sahayak_backend_url') || '';
+      const input = prompt("Enter your Render Backend URL (e.g. https://sahayak-backend.onrender.com) or leave blank for automatic relative proxy:", current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('sahayak_backend_url', input.trim());
+          document.getElementById('apiHostLabel').innerText = "Backend: Custom";
+        } else {
+          localStorage.removeItem('sahayak_backend_url');
+          document.getElementById('apiHostLabel').innerText = "Backend: Auto";
+        }
+        loadDocumentsCatalog();
+        matchSchemes();
+      }
+    }
+
+    const PERSONA_DATA = {
+      sunita: {
+        name: "Sunita Yadav",
+        age: 21,
+        state: "Uttar Pradesh",
+        gender: "female",
+        category: "obc",
+        occupation: "student",
+        education_level: "undergraduate",
+        annual_family_income: 150000,
+        ration_card: "apl",
+        landholding_acres: 0.0,
+        existing_documents: ["aadhaar_card", "bank_passbook", "bonafide_admission_proof"]
+      },
+      ramesh: {
+        name: "Ramesh Kumar",
+        age: 42,
+        state: "Uttar Pradesh",
+        gender: "male",
+        category: "sc",
+        occupation: "farmer",
+        education_level: "primary",
+        annual_family_income: 90000,
+        ration_card: "bpl",
+        landholding_acres: 2.0,
+        existing_documents: ["aadhaar_card", "bank_passbook", "ration_card"]
+      },
+      munni: {
+        name: "Munni Devi",
+        age: 35,
+        state: "Uttar Pradesh",
+        gender: "female",
+        category: "obc",
+        occupation: "daily_wage_laborer",
+        education_level: "none",
+        annual_family_income: 80000,
+        ration_card: "bpl",
+        landholding_acres: 0.0,
+        existing_documents: ["aadhaar_card", "bank_passbook", "ration_card"]
+      },
+      mohan: {
+        name: "Mohan Lal",
+        age: 28,
+        state: "Uttar Pradesh",
+        gender: "male",
+        category: "general",
+        occupation: "street_vendor",
+        education_level: "secondary",
+        annual_family_income: 120000,
+        ration_card: "apl",
+        landholding_acres: 0.0,
+        existing_documents: ["aadhaar_card", "bank_passbook"]
+      }
+    };
+
+    function loadPersona(key) {
+      const p = PERSONA_DATA[key];
+      if (!p) return;
+      document.getElementById('name').value = p.name;
+      document.getElementById('age').value = p.age;
+      document.getElementById('state').value = p.state;
+      document.getElementById('gender').value = p.gender;
+      document.getElementById('category').value = p.category;
+      document.getElementById('occupation').value = p.occupation;
+      document.getElementById('education_level').value = p.education_level;
+      document.getElementById('annual_income').value = p.annual_family_income;
+      document.getElementById('ration_card').value = p.ration_card;
+      document.getElementById('landholding_acres').value = p.landholding_acres;
+
+      // Reset checkboxes
+      document.getElementById('doc_aadhaar').checked = p.existing_documents.includes('aadhaar_card');
+      document.getElementById('doc_bank').checked = p.existing_documents.includes('bank_passbook');
+      document.getElementById('doc_income').checked = p.existing_documents.includes('income_certificate');
+      document.getElementById('doc_caste').checked = p.existing_documents.includes('caste_certificate');
+      document.getElementById('doc_domicile').checked = p.existing_documents.includes('domicile_certificate');
+      document.getElementById('doc_bonafide').checked = p.existing_documents.includes('bonafide_admission_proof');
+
+      matchSchemes();
+    }
+
+    async function matchSchemes() {
+      const existing_docs = [];
+      if (document.getElementById('doc_aadhaar').checked) existing_docs.push('aadhaar_card');
+      if (document.getElementById('doc_bank').checked) existing_docs.push('bank_passbook');
+      if (document.getElementById('doc_income').checked) existing_docs.push('income_certificate');
+      if (document.getElementById('doc_caste').checked) existing_docs.push('caste_certificate');
+      if (document.getElementById('doc_domicile').checked) existing_docs.push('domicile_certificate');
+      if (document.getElementById('doc_bonafide').checked) existing_docs.push('bonafide_admission_proof');
+
+      const payload = {
+        name: document.getElementById('name').value,
+        age: parseInt(document.getElementById('age').value),
+        state: document.getElementById('state').value,
+        gender: document.getElementById('gender').value,
+        category: document.getElementById('category').value,
+        occupation: document.getElementById('occupation').value,
+        education_level: document.getElementById('education_level').value,
+        annual_family_income: parseInt(document.getElementById('annual_income').value),
+        ration_card: document.getElementById('ration_card').value,
+        landholding_acres: parseFloat(document.getElementById('landholding_acres').value),
+        existing_documents: existing_docs
+      };
+
+      try {
+        const res = await fetch(getApiBaseUrl() + '/api/match', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        currentMatchResults = data;
+        renderResults(data);
+      } catch (err) {
+        console.error("Match error:", err);
+      }
+    }
+
+    function renderResults(data) {
+      document.getElementById('statHeader').innerText = `${data.matched_count} Schemes Unlocked for ${data.citizen.name}`;
+      document.getElementById('tabCount').innerText = data.matched_count;
+      document.getElementById('whatsappCardText').innerText = data.whatsapp_card;
+      document.getElementById('hindiExplanationText').innerText = data.hindi_explanation;
+
+      const container = document.getElementById('tabSchemes');
+      container.innerHTML = '';
+
+      if (data.matches.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-xl p-8 text-center text-slate-500 border border-slate-200">
+            <p class="font-bold">No exact scheme matches found with current filters.</p>
+            <p class="text-xs mt-1">Try adjusting income threshold or social category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      data.matches.forEach(m => {
+        const s = m.scheme;
+        let badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+        let badgeText = "🟢 Ready to Apply (100%)";
+        if (m.readiness_score < 100 && m.readiness_score >= 50) {
+          badgeColor = "bg-amber-50 text-amber-700 border-amber-200";
+          badgeText = `🟡 Documents Pending (${m.readiness_score}%)`;
+        } else if (m.readiness_score < 50) {
+          badgeColor = "bg-rose-50 text-rose-700 border-rose-200";
+          badgeText = `🔴 Action Required (${m.readiness_score}%)`;
+        }
+
+        // Missing docs chips
+        let missingChipsHtml = '';
+        if (m.documents_missing && m.documents_missing.length > 0) {
+          missingChipsHtml = `
+            <div class="mt-3 pt-3 border-t border-slate-100">
+              <span class="text-xs font-bold text-slate-500 block mb-1.5">Missing Documents (Click for Procurement Guide):</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${m.documents_missing.map(docId => {
+                  return `<button onclick="openDocGuide('${docId}')" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 flex items-center space-x-1 transition">
+                    <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                    <span>${docId.replace(/_/g, ' ').toUpperCase()}</span>
+                  </button>`;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition";
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">${s.category_tag}</span>
+                <span class="text-xs text-slate-400 font-medium">${s.level} Scheme</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 mt-1">${s.name}</h4>
+              <p class="text-xs text-slate-500 font-medium italic">${s.hindi_name || ''}</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-bold border ${badgeColor} whitespace-nowrap">
+              ${badgeText}
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-700 my-2.5 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+            <strong>🎁 Benefit:</strong> ${s.benefit_summary}
+          </p>
+
+          <div class="text-xs text-slate-600 space-y-1 mb-3">
+            <span class="font-bold text-slate-700 block">Why You Qualify:</span>
+            ${m.eligibility_reasons.slice(0, 3).map(r => `<div class="flex items-center space-x-1.5"><span class="text-emerald-600 font-bold">✓</span><span>${r}</span></div>`).join('')}
+          </div>
+
+          ${missingChipsHtml}
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-[11px] text-slate-400">Deadline: ${s.application_deadline}</span>
+            <a href="${s.official_url}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1 transition shadow-sm">
+              <span>Apply on Official Portal</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    async function loadDocumentsCatalog() {
+      try {
+        const res = await fetch(getApiBaseUrl() + '/api/documents');
+        const data = await res.json();
+        data.documents.forEach(d => {
+          docsCatalog[d.doc_id] = d;
+        });
+      } catch (e) {
+        console.error("Docs load error:", e);
+      }
+    }
+
+    function openDocGuide(docId) {
+      const doc = docsCatalog[docId];
+      if (!doc) return;
+      document.getElementById('modalDocName').innerText = doc.doc_name;
+      document.getElementById('modalAuthority').innerText = doc.issuing_authority;
+      document.getElementById('modalTime').innerText = `~${doc.processing_time_days} Days`;
+      document.getElementById('modalFee').innerText = `₹${doc.estimated_cost_inr}`;
+      document.getElementById('modalPortalLink').href = doc.official_portal_url;
+
+      const proofsList = document.getElementById('modalProofs');
+      proofsList.innerHTML = doc.required_proofs.map(p => `<li>${p}</li>`).join('');
+
+      const stepsList = document.getElementById('modalSteps');
+      stepsList.innerHTML = doc.step_by_step_process.map(s => `<li>${s}</li>`).join('');
+
+      document.getElementById('docModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeDocModal() {
+      document.getElementById('docModal').classList.add('hidden');
+    }
+
+    function switchTab(tab) {
+      const schemesTab = document.getElementById('tabSchemes');
+      const whatsappTab = document.getElementById('tabWhatsapp');
+      const hindiTab = document.getElementById('tabHindi');
+
+      const btnS = document.getElementById('tabSchemesBtn');
+      const btnW = document.getElementById('tabWhatsappBtn');
+      const btnH = document.getElementById('tabHindiBtn');
+
+      schemesTab.classList.add('hidden');
+      whatsappTab.classList.add('hidden');
+      hindiTab.classList.add('hidden');
+
+      btnS.className = "pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5";
+      btnW.className = "pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5";
+      btnH.className = "pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5";
+
+      if (tab === 'schemes') {
+        schemesTab.classList.remove('hidden');
+        btnS.className = "pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5";
+      } else if (tab === 'whatsapp') {
+        whatsappTab.classList.remove('hidden');
+        btnW.className = "pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5";
+      } else if (tab === 'hindi') {
+        hindiTab.classList.remove('hidden');
+        btnH.className = "pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5";
+      }
+    }
+
+    function copyWhatsappText() {
+      const text = document.getElementById('whatsappCardText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const label = document.getElementById('copyBtnLabel');
+        label.innerText = "Copied!";
+        setTimeout(() => { label.innerText = "Copy Message"; }, 2000);
+      });
+    }
+
+    // Initialize on window load
+    window.addEventListener('DOMContentLoaded', async () => {
+      lucide.createIcons();
+      if (localStorage.getItem('sahayak_backend_url')) {
+        const el = document.getElementById('apiHostLabel');
+        if (el) el.innerText = "Backend: Custom";
+      }
+      await loadDocumentsCatalog();
+      await matchSchemes();
+    });
+  </script>
+</body>
+</html>
