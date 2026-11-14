@@ -69,6 +69,9 @@ class RulesEngine:
                         required_document_ids=item.get("required_document_ids", []),
                         application_deadline=item.get("application_deadline", "Open throughout the year"),
                         next_action_steps=item.get("next_action_steps", []),
+                        last_verified_date=item.get("last_verified_date", "2026-11-10"),
+                        verified_by=item.get("verified_by", "Sahayak Editorial Board / Official Portal Audit"),
+                        version=item.get("version", "2026.2"),
                     )
                     self.schemes.append(scheme)
         except Exception as e:

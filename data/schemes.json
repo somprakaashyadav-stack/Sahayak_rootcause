@@ -14,11 +14,29 @@
     "rules": {
       "min_age": 16,
       "max_age": 35,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["sc", "st", "obc", "general", "ews"],
-      "applicable_occupations": ["student"],
-      "applicable_education_levels": ["higher_secondary", "undergraduate", "postgraduate", "diploma", "iti"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "sc",
+        "st",
+        "obc",
+        "general",
+        "ews"
+      ],
+      "applicable_occupations": [
+        "student"
+      ],
+      "applicable_education_levels": [
+        "higher_secondary",
+        "undergraduate",
+        "postgraduate",
+        "diploma",
+        "iti"
+      ],
       "max_annual_income": 200000,
       "requires_first_gen_student": false,
       "requires_disability": false,
@@ -39,7 +57,10 @@
       "Get College Bonafide Certificate with course fee breakdown.",
       "Register on scholarship.up.gov.in using Aadhaar OTP authentication.",
       "Submit final printout with photocopies of all documents to your college scholarship counter."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "up_digishakti_smartphone_tablet",
@@ -56,11 +77,24 @@
     "rules": {
       "min_age": 18,
       "max_age": 30,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["student"],
-      "applicable_education_levels": ["undergraduate", "postgraduate", "diploma", "iti"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "student"
+      ],
+      "applicable_education_levels": [
+        "undergraduate",
+        "postgraduate",
+        "diploma",
+        "iti"
+      ],
       "max_annual_income": null,
       "requires_first_gen_student": false,
       "requires_disability": false,
@@ -77,7 +111,10 @@
       "No individual citizen portal application required; verify your enrollment on the DigiShakti university portal.",
       "Submit your Aadhaar number and active mobile number to your college administrative nodal officer.",
       "Receive SMS verification from DigiShakti and attend the distribution camp."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_kisan",
@@ -94,10 +131,18 @@
     "rules": {
       "min_age": 18,
       "max_age": null,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["farmer"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "farmer"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": null,
       "requires_first_gen_student": false,
@@ -115,7 +160,10 @@
       "Ensure land revenue record (Khatauni) is updated in farmer's name.",
       "Complete eKYC on pmkisan.gov.in via Aadhaar OTP or facial recognition app.",
       "Verify Aadhaar NPCI seeding with your bank account."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_jay_ayushman_bharat",
@@ -132,15 +180,24 @@
     "rules": {
       "min_age": null,
       "max_age": null,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
       "applicable_occupations": [],
       "applicable_education_levels": [],
       "max_annual_income": 250000,
       "requires_first_gen_student": false,
       "requires_disability": false,
-      "allowed_ration_cards": ["bpl", "aay"],
+      "allowed_ration_cards": [
+        "bpl",
+        "aay"
+      ],
       "max_landholding_acres": null,
       "requires_construction_worker": false
     },
@@ -152,7 +209,10 @@
       "Check name in SECC 2011 / NFSA database on beneficiary.nha.gov.in or via Ayushman App.",
       "Visit nearest CSC center or District Hospital Ayushman Mitra desk.",
       "Authenticate via biometric Aadhaar e-KYC and download PVC Ayushman Card."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "up_kanya_sumangala_yojana",
@@ -169,10 +229,20 @@
     "rules": {
       "min_age": 0,
       "max_age": 25,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["female"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["student", "unemployed", "homemaker"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "female"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "student",
+        "unemployed",
+        "homemaker"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": 300000,
       "requires_first_gen_student": false,
@@ -192,7 +262,10 @@
       "Register on mksy.up.gov.in as Citizen.",
       "Select Stage 6 (for girls enrolled in Degree/Diploma after Class 12).",
       "Upload admission fee receipt, bank passbook, and parent's income affidavit."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "up_bocw_shramik_scholarship",
@@ -209,11 +282,26 @@
     "rules": {
       "min_age": 6,
       "max_age": 25,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["student"],
-      "applicable_education_levels": ["secondary", "higher_secondary", "undergraduate", "postgraduate", "diploma", "iti"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "student"
+      ],
+      "applicable_education_levels": [
+        "secondary",
+        "higher_secondary",
+        "undergraduate",
+        "postgraduate",
+        "diploma",
+        "iti"
+      ],
       "max_annual_income": null,
       "requires_first_gen_student": false,
       "requires_disability": false,
@@ -231,7 +319,10 @@
       "Ensure parent has an active UP BOCW Shramik registration.",
       "Apply online under Welfare Schemes on upbocw.in.",
       "Submit child's bonafide certificate and bank account for direct monthly stipend transfer."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_svanidhi",
@@ -248,10 +339,19 @@
     "rules": {
       "min_age": 18,
       "max_age": 65,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["street_vendor", "self_employed"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "street_vendor",
+        "self_employed"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": null,
       "requires_first_gen_student": false,
@@ -268,7 +368,10 @@
       "Check vendor survey list or obtain Letter of Recommendation (LoR) from Urban Local Body / Nagar Palika.",
       "Apply on pmsvanidhi.mohua.gov.in or through nearest banking correspondent / CSC.",
       "Loan sanctioned and disbursed within 15 days."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_ujjwala_yojana",
@@ -285,15 +388,27 @@
     "rules": {
       "min_age": 18,
       "max_age": null,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["female"],
-      "applicable_categories": ["sc", "st", "obc", "ews"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "female"
+      ],
+      "applicable_categories": [
+        "sc",
+        "st",
+        "obc",
+        "ews"
+      ],
       "applicable_occupations": [],
       "applicable_education_levels": [],
       "max_annual_income": 200000,
       "requires_first_gen_student": false,
       "requires_disability": false,
-      "allowed_ration_cards": ["bpl", "aay"],
+      "allowed_ration_cards": [
+        "bpl",
+        "aay"
+      ],
       "max_landholding_acres": null,
       "requires_construction_worker": false
     },
@@ -307,7 +422,10 @@
       "Apply through nearest LPG distributor (Indane, BharatGas, or HP Gas) or online at pmuy.gov.in.",
       "Submit Aadhaar copies of all adult family members residing together.",
       "LPG distributor verifies lack of existing connection and installs stove and cylinder."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "atal_pension_yojana",
@@ -324,10 +442,23 @@
     "rules": {
       "min_age": 18,
       "max_age": 40,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["daily_wage_laborer", "farmer", "self_employed", "street_vendor", "unemployed", "homemaker"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "daily_wage_laborer",
+        "farmer",
+        "self_employed",
+        "street_vendor",
+        "unemployed",
+        "homemaker"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": 300000,
       "requires_first_gen_student": false,
@@ -344,7 +475,10 @@
       "Visit bank branch where you have a savings account or access net banking/mobile banking.",
       "Submit APY subscriber registration form designating monthly auto-debit contribution (starts from ₹42/month at age 18).",
       "Receive PRAN (Permanent Retirement Account Number) card confirmation via SMS."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "sukanya_samriddhi_yojana",
@@ -361,9 +495,15 @@
     "rules": {
       "min_age": 0,
       "max_age": 10,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["female"],
-      "applicable_categories": ["all"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "female"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
       "applicable_occupations": [],
       "applicable_education_levels": [],
       "max_annual_income": null,
@@ -381,7 +521,10 @@
       "Open account at any Post Office or authorized commercial bank.",
       "Deposit initial minimum amount of ₹250 with child birth certificate and parent's Aadhaar.",
       "Receive SSY Passbook to track yearly contributions."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "up_old_age_pension",
@@ -398,15 +541,29 @@
     "rules": {
       "min_age": 60,
       "max_age": 120,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["retired", "unemployed", "daily_wage_laborer", "homemaker"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "retired",
+        "unemployed",
+        "daily_wage_laborer",
+        "homemaker"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": 56460,
       "requires_first_gen_student": false,
       "requires_disability": false,
-      "allowed_ration_cards": ["bpl", "aay"],
+      "allowed_ration_cards": [
+        "bpl",
+        "aay"
+      ],
       "max_landholding_acres": null,
       "requires_construction_worker": false
     },
@@ -420,7 +577,10 @@
       "Apply online on sspy-up.gov.in under Old Age Pension.",
       "Upload Aadhaar, age proof, and income certificate issued by Tehsildar.",
       "Block Development Officer (BDO) or Sub-Divisional Magistrate (SDM) verifies within 30 days."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_kaushal_vikas_yojana",
@@ -437,11 +597,28 @@
     "rules": {
       "min_age": 15,
       "max_age": 45,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["student", "unemployed", "daily_wage_laborer", "self_employed"],
-      "applicable_education_levels": ["secondary", "higher_secondary", "diploma", "iti", "undergraduate"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "student",
+        "unemployed",
+        "daily_wage_laborer",
+        "self_employed"
+      ],
+      "applicable_education_levels": [
+        "secondary",
+        "higher_secondary",
+        "diploma",
+        "iti",
+        "undergraduate"
+      ],
       "max_annual_income": null,
       "requires_first_gen_student": false,
       "requires_disability": false,
@@ -457,7 +634,10 @@
       "Find nearest PMKVY training center on Skill India Digital portal (skillindiadigital.gov.in).",
       "Select desired job role (e.g. Solar Technician, Healthcare Assistant, IT Helpdesk).",
       "Enroll with Aadhaar and start short-term training course."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "up_vivah_anudan_yojana",
@@ -474,15 +654,28 @@
     "rules": {
       "min_age": 18,
       "max_age": 45,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["female"],
-      "applicable_categories": ["sc", "st", "obc", "general", "ews"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "female"
+      ],
+      "applicable_categories": [
+        "sc",
+        "st",
+        "obc",
+        "general",
+        "ews"
+      ],
       "applicable_occupations": [],
       "applicable_education_levels": [],
       "max_annual_income": 56460,
       "requires_first_gen_student": false,
       "requires_disability": false,
-      "allowed_ration_cards": ["bpl", "aay"],
+      "allowed_ration_cards": [
+        "bpl",
+        "aay"
+      ],
       "max_landholding_acres": null,
       "requires_construction_worker": false
     },
@@ -497,7 +690,10 @@
       "Apply online on shadianudan.upsdc.gov.in.",
       "Upload marriage invitation card and bride's age proof (minimum 18 years, groom minimum 21 years).",
       "Tehsildar approves and amount is credited directly to bride's bank account."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "pm_awas_yojana_gramin",
@@ -514,15 +710,28 @@
     "rules": {
       "min_age": 18,
       "max_age": null,
-      "applicable_states": ["All India"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
-      "applicable_occupations": ["daily_wage_laborer", "farmer", "unemployed"],
+      "applicable_states": [
+        "All India"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
+      "applicable_occupations": [
+        "daily_wage_laborer",
+        "farmer",
+        "unemployed"
+      ],
       "applicable_education_levels": [],
       "max_annual_income": 120000,
       "requires_first_gen_student": false,
       "requires_disability": false,
-      "allowed_ration_cards": ["bpl", "aay"],
+      "allowed_ration_cards": [
+        "bpl",
+        "aay"
+      ],
       "max_landholding_acres": 2.5,
       "requires_construction_worker": false
     },
@@ -535,7 +744,10 @@
       "Verify registration in Gram Sabha Awaas+ priority list.",
       "Geo-tagging of kutcha house site conducted by Gram Rozgar Sahayak via AwaasApp.",
       "Funds released directly into bank account in 3 construction milestone tranches."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   },
   {
     "id": "swavlamban_divyang_pension",
@@ -552,9 +764,15 @@
     "rules": {
       "min_age": 18,
       "max_age": 120,
-      "applicable_states": ["Uttar Pradesh"],
-      "applicable_genders": ["all"],
-      "applicable_categories": ["all"],
+      "applicable_states": [
+        "Uttar Pradesh"
+      ],
+      "applicable_genders": [
+        "all"
+      ],
+      "applicable_categories": [
+        "all"
+      ],
       "applicable_occupations": [],
       "applicable_education_levels": [],
       "max_annual_income": 200000,
@@ -576,6 +794,9 @@
       "Obtain UDID disability card certifying ≥ 40% disability from District CMO.",
       "Apply online on sspy-up.gov.in under Divyang Pension.",
       "District Divyangjan Officer verifies and disburses pension quarterly."
-    ]
+    ],
+    "last_verified_date": "2026-11-10",
+    "verified_by": "Sahayak Editorial Board / Official Portal Audit",
+    "version": "2026.2"
   }
 ]

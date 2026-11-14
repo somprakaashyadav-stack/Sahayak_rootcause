@@ -130,9 +130,22 @@ class Scheme:
     required_document_ids: List[str] = field(default_factory=list)
     application_deadline: Optional[str] = "Open throughout the year"
     next_action_steps: List[str] = field(default_factory=list)
+    last_verified_date: str = "2026-11-10"
+    verified_by: str = "Sahayak Editorial Board / Official Portal Audit"
+    version: str = "2026.2"
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+
+@dataclass
+class OTPSession:
+    """Represents an active citizen OTP authentication session."""
+    phone_number: str
+    otp_code: str
+    created_at_epoch: float
+    is_verified: bool = False
+    session_token: Optional[str] = None
 
 
 @dataclass

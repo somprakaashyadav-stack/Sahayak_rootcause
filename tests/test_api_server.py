@@ -123,6 +123,42 @@ def test_in_memory_api():
     assert voice_data["profile"]["age"] == 21
     print(f"✓ POST /api/voice/parse passed ({len(voice_data['extracted_fields'])} fields extracted from Hindi speech)")
 
+    # 4.6 POST /api/auth/send-otp
+    h, b = simulate_request("POST", "/api/auth/send-otp", {"phone_number": "9876543210"})
+    assert "200 OK" in h
+    otp_res = json.loads(b.decode("utf-8"))
+    assert otp_res["status"] == "success"
+    demo_otp = otp_res["demo_otp"]
+    print(f"✓ POST /api/auth/send-otp passed (Generated OTP: {demo_otp})")
+
+    # 4.7 POST /api/auth/verify-otp
+    h, b = simulate_request("POST", "/api/auth/verify-otp", {"phone_number": "9876543210", "otp": demo_otp})
+    assert "200 OK" in h
+    verify_res = json.loads(b.decode("utf-8"))
+    assert verify_res["status"] == "success"
+    assert "session_token" in verify_res
+    print(f"✓ POST /api/auth/verify-otp passed (Session: {verify_res['session_token'][:18]}...)")
+
+    # 4.8 GET /api/admin/schemes (Review Layer)
+    h, b = simulate_request("GET", "/api/admin/schemes")
+    assert "200 OK" in h
+    admin_data = json.loads(b.decode("utf-8"))
+    assert admin_data["review_layer"]["audit_compliance_pct"] == 100
+    assert "last_verified_date" in admin_data["schemes"][0]
+    print(f"✓ GET /api/admin/schemes passed (Audited {len(admin_data['schemes'])} schemes with last verified dates)")
+
+    # 4.9 POST /api/admin/verify-scheme
+    h, b = simulate_request("POST", "/api/admin/verify-scheme", {
+        "scheme_id": "up_post_matric_scholarship",
+        "verified_by": "State Scholarship Directorate Audit",
+        "verified_date": "2026-11-14"
+    })
+    assert "200 OK" in h
+    audit_res = json.loads(b.decode("utf-8"))
+    assert audit_res["status"] == "success"
+    assert audit_res["scheme"]["verified_by"] == "State Scholarship Directorate Audit"
+    print("✓ POST /api/admin/verify-scheme passed (Audit timestamp updated)")
+
     # 5. Static Frontend
     h, b = simulate_request("GET", "/")
     assert "200 OK" in h
