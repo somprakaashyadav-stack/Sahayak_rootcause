@@ -44,6 +44,10 @@
 
       <!-- Quick Action Badges -->
       <div class="hidden md:flex items-center space-x-4 text-xs font-medium text-slate-600">
+        <button onclick="promptBackendUrl()" class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80 hover:bg-slate-200 transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="apiHostLabel">Backend: Auto</span>
+        </button>
         <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200/80">
           <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
           <span>100% Explainable Rules</span>
@@ -393,6 +397,28 @@
     let docsCatalog = {};
     let currentMatchResults = null;
 
+    function getApiBaseUrl() {
+      const custom = localStorage.getItem('sahayak_backend_url');
+      if (custom) return custom.replace(/\/+$/, '');
+      return '';
+    }
+
+    function promptBackendUrl() {
+      const current = localStorage.getItem('sahayak_backend_url') || '';
+      const input = prompt("Enter your Render Backend URL (e.g. https://sahayak-backend.onrender.com) or leave blank for automatic relative proxy:", current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('sahayak_backend_url', input.trim());
+          document.getElementById('apiHostLabel').innerText = "Backend: Custom";
+        } else {
+          localStorage.removeItem('sahayak_backend_url');
+          document.getElementById('apiHostLabel').innerText = "Backend: Auto";
+        }
+        loadDocumentsCatalog();
+        matchSchemes();
+      }
+    }
+
     const PERSONA_DATA = {
       sunita: {
         name: "Sunita Yadav",
@@ -497,7 +523,7 @@
       };
 
       try {
-        const res = await fetch('/api/match', {
+        const res = await fetch(getApiBaseUrl() + '/api/match', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
@@ -603,7 +629,7 @@
 
     async function loadDocumentsCatalog() {
       try {
-        const res = await fetch('/api/documents');
+        const res = await fetch(getApiBaseUrl() + '/api/documents');
         const data = await res.json();
         data.documents.forEach(d => {
           docsCatalog[d.doc_id] = d;
@@ -677,6 +703,10 @@
     // Initialize on window load
     window.addEventListener('DOMContentLoaded', async () => {
       lucide.createIcons();
+      if (localStorage.getItem('sahayak_backend_url')) {
+        const el = document.getElementById('apiHostLabel');
+        if (el) el.innerText = "Backend: Custom";
+      }
       await loadDocumentsCatalog();
       await matchSchemes();
     });

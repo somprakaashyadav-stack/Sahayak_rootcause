@@ -5,6 +5,7 @@ Serves the REST API endpoints and hosts the modern web dashboard.
 """
 
 import sys
+import os
 import json
 import mimetypes
 from pathlib import Path
@@ -168,14 +169,14 @@ def asdict_prereq(p):
     }
 
 
-def run_server(port: int = 8000):
-    server_address = ("", port)
+def run_server(host: str = "0.0.0.0", port: int = 8000):
+    server_address = (host, port)
     httpd = HTTPServer(server_address, SahayakHandler)
-    print(f"🚀 Sahayak Web & API Server running at http://localhost:{port}")
-    print(f"   - Web UI: http://localhost:{port}/")
-    print(f"   - Match API: POST http://localhost:{port}/api/match")
-    print(f"   - Schemes API: GET http://localhost:{port}/api/schemes")
-    print(f"   - Documents API: GET http://localhost:{port}/api/documents")
+    print(f"🚀 Sahayak Web & API Server running at http://{host}:{port}")
+    print(f"   - Web UI: http://{host}:{port}/")
+    print(f"   - Match API: POST http://{host}:{port}/api/match")
+    print(f"   - Schemes API: GET http://{host}:{port}/api/schemes")
+    print(f"   - Documents API: GET http://{host}:{port}/api/documents")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
@@ -184,5 +185,6 @@ def run_server(port: int = 8000):
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
-    run_server(port)
+    port_env = os.environ.get("PORT")
+    port = int(port_env) if port_env else (int(sys.argv[1]) if len(sys.argv) > 1 else 8000)
+    run_server("0.0.0.0", port)
