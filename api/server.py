@@ -25,10 +25,12 @@ from engine.models import (
 )
 from engine.matcher import RulesEngine
 from ai.explainer import SahayakExplainer
+from engine.voice_parser import VoiceProfileParser
 
 # Initialize singleton instances
 rules_engine = RulesEngine()
 explainer = SahayakExplainer()
+voice_parser = VoiceProfileParser()
 
 
 class SahayakHandler(BaseHTTPRequestHandler):
@@ -132,6 +134,42 @@ class SahayakHandler(BaseHTTPRequestHandler):
                     "benefits_summary": plan.total_benefits_unlocked_estimate,
                     "consolidated_checklist": plan.consolidated_document_checklist,
                     "urgent_next_actions": plan.urgent_next_actions,
+                    "whatsapp_card": plan.whatsapp_summary_text,
+                    "hindi_explanation": plan.hindi_explanation_summary,
+                    "matches": [
+                        {
+                            "scheme": m.scheme.to_dict(),
+                            "is_eligible": m.is_eligible,
+                            "eligibility_reasons": m.eligibility_reasons,
+                            "documents_ready": m.documents_ready,
+                            "documents_missing": m.documents_missing,
+                            "readiness_score": m.readiness_score,
+                            "prerequisite_action_plans": [asdict_prereq(p) for p in m.prerequisite_action_plans]
+                        }
+                        for m in plan.matched_schemes
+                    ]
+                }
+                self._send_json_response(response_data)
+            except Exception as e:
+                self._send_json_response({"status": "error", "message": str(e)}, status_code=400)
+        elif parsed.path == "/api/voice/parse":
+            try:
+                content_length = int(self.headers.get("Content-Length", 0))
+                raw_body = self.rfile.read(content_length).decode("utf-8")
+                payload = json.loads(raw_body) if raw_body else {}
+                transcript = payload.get("transcript", "") or payload.get("text", "")
+
+                profile, extracted_fields = voice_parser.parse_transcript(transcript)
+
+                plan = rules_engine.generate_readiness_plan(profile)
+                plan = explainer.enhance_plan(plan)
+
+                response_data = {
+                    "status": "success",
+                    "transcript": transcript,
+                    "extracted_fields": extracted_fields,
+                    "profile": profile.to_dict(),
+                    "matched_count": len(plan.matched_schemes),
                     "whatsapp_card": plan.whatsapp_summary_text,
                     "hindi_explanation": plan.hindi_explanation_summary,
                     "matches": [

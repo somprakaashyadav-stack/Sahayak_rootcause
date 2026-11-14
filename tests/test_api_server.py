@@ -112,6 +112,17 @@ def test_in_memory_api():
     assert "whatsapp_card" in data
     print(f"✓ POST /api/match passed ({data['matched_count']} schemes matched)")
 
+    # 4.5 POST /api/voice/parse
+    h, b = simulate_request("POST", "/api/voice/parse", {
+        "transcript": "मेरा नाम सुनीता है, मैं 21 साल की हूँ, उत्तर प्रदेश से हूँ, ओबीसी वर्ग है, कॉलेज छात्रा हूँ और परिवार की आय 150000 रुपये है"
+    })
+    assert "200 OK" in h
+    voice_data = json.loads(b.decode("utf-8"))
+    assert voice_data["status"] == "success"
+    assert len(voice_data["extracted_fields"]) >= 5
+    assert voice_data["profile"]["age"] == 21
+    print(f"✓ POST /api/voice/parse passed ({len(voice_data['extracted_fields'])} fields extracted from Hindi speech)")
+
     # 5. Static Frontend
     h, b = simulate_request("GET", "/")
     assert "200 OK" in h
