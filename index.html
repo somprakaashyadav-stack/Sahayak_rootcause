@@ -408,6 +408,30 @@
           </button>
         </div>
 
+        <!-- Suggested for you / Government Scheme Recommendation -->
+        <div id="suggestedSchemeCard" class="p-5 rounded-2xl bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/5 border border-orange-200/90 shadow-xs relative overflow-hidden transition hover:shadow-sm">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div class="space-y-1 max-w-xl">
+              <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-orange-600 text-white shadow-xs">
+                  <i data-lucide="sparkles" class="w-3 h-3"></i>
+                  <span>Suggested for you</span>
+                </span>
+                <span class="text-xs text-orange-800/80 font-semibold">• Trending in your demographic</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 pt-0.5">Government Scheme Recommendation</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">People with profiles similar to yours have also been shown this scheme.</p>
+              <div id="suggestedSchemePreview" class="pt-1.5 flex items-center space-x-2 text-xs">
+                <span class="font-bold text-slate-800" id="suggestedSchemeTitle">PM Kaushal Vikas Yojana 4.0 (PMKVY)</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">100% Match</span>
+              </div>
+            </div>
+            <button onclick="checkSuggestedEligibility()" class="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1.5 shadow-md shadow-orange-600/20 transition transform active:scale-95 shrink-0">
+              <span>Check your eligibility &rarr;</span>
+            </button>
+          </div>
+        </div>
+
         <!-- TAB 1: Scheme Cards Container -->
         <div id="tabSchemes" class="space-y-4">
           <!-- Dynamic Scheme Cards render here with verification audit & explainable predicates -->
@@ -1544,6 +1568,14 @@
         return;
       }
 
+      if (data.matches && data.matches.length > 0) {
+        const topScheme = data.matches[0].scheme;
+        const suggestedTitle = document.getElementById('suggestedSchemeTitle');
+        if (suggestedTitle) {
+          suggestedTitle.innerText = topScheme.name;
+        }
+      }
+
       data.matches.forEach(m => {
         const s = m.scheme;
         let badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
@@ -1911,6 +1943,7 @@
       const docsTab = document.getElementById('tabDocs');
       const whatsappTab = document.getElementById('tabWhatsapp');
       const hindiTab = document.getElementById('tabHindi');
+      const suggestedBanner = document.getElementById('suggestedSchemeCard');
 
       const btnS = document.getElementById('tabSchemesBtn');
       const btnD = document.getElementById('tabDocsBtn');
@@ -1927,6 +1960,14 @@
       btnW.className = "pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5";
       btnH.className = "pb-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-1.5";
 
+      if (suggestedBanner) {
+        if (tab === 'schemes') {
+          suggestedBanner.classList.remove('hidden');
+        } else {
+          suggestedBanner.classList.add('hidden');
+        }
+      }
+
       if (tab === 'schemes') {
         schemesTab.classList.remove('hidden');
         btnS.className = "pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5";
@@ -1939,6 +1980,20 @@
       } else if (tab === 'hindi') {
         hindiTab.classList.remove('hidden');
         btnH.className = "pb-2.5 border-b-2 border-orange-600 text-orange-600 flex items-center space-x-1.5";
+      }
+    }
+
+    function checkSuggestedEligibility() {
+      switchTab('schemes');
+      const container = document.getElementById('tabSchemes');
+      if (container && container.firstElementChild) {
+        container.firstElementChild.scrollIntoView({ behavior: 'smooth' });
+        container.firstElementChild.classList.add('ring-4', 'ring-orange-400', 'transition-all');
+        setTimeout(() => {
+          container.firstElementChild.classList.remove('ring-4', 'ring-orange-400');
+        }, 2200);
+      } else {
+        matchSchemes();
       }
     }
 
